@@ -1,0 +1,8 @@
+{
+  "name": "syllabarytech/html5up-forty-wp-theme",
+  "description": "A WordPress version of the forty theme by HTML5UP",
+  "type": "wordpress-theme",
+  "require": {
+    "php": ">=7.0"
+  }
+}
