@@ -2,15 +2,16 @@
 
 namespace SyllabaryDotTech\Theme\Forty;
 
-?>
-<html>
+?><html class="no-js" <?php language_attributes(); ?>>
 	<head>
-		<title>Forty by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<title><?php wp_title('&raquo;','true','right'); ?><?php bloginfo('name'); ?></title>
+		<meta charset="<?php bloginfo('charset'); ?>" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
         <?php wp_head(); ?>
 	</head>
-	<body class="is-preload">
+	<body <?php body_class("is-preload"); ?>>
+
+		<?php wp_body_open(); ?>
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -18,21 +19,24 @@ namespace SyllabaryDotTech\Theme\Forty;
 				<!-- Header -->
 					<header id="header" class="alt">
 						<a href="index.html" class="logo"><strong>Forty</strong> <span>by HTML5 UP</span></a>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
+						<?php if ( has_nav_menu( 'primary' ) || has_nav_menu( 'actions' ) ) { ?>
+							<nav>
+								<a href="#menu">Menu</a>
+							</nav>
+				        <?php } ?>
 					</header>
 
 				<!-- Menu -->
-					<nav id="menu">
-						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="landing.html">Landing</a></li>
-							<li><a href="generic.html">Generic</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
-						<ul class="actions stacked">
-							<li><a href="#" class="button primary fit">Get Started</a></li>
-							<li><a href="#" class="button fit">Log In</a></li>
-						</ul>
-					</nav>
+					<?php if ( has_nav_menu( 'primary' ) || has_nav_menu( 'actions' ) ) { ?>
+						<nav id="menu">
+							<?php
+								if ( has_nav_menu( 'primary' ) ) {
+									wp_nav_menu(['menu' => 'primary', 'menu_class' => 'links', 'container' => false, 'fallback_cb' => false]);
+								}
+
+								if ( has_nav_menu( 'actions' ) ) {
+									wp_nav_menu(['menu' => 'actions', 'menu_class' => 'actions stacked', 'container' => false, 'fallback_cb' => false]);
+								}
+							?>
+						</nav>
+					<?php } ?>

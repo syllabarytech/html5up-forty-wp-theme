@@ -23,7 +23,27 @@ function enqueue_scripts() {
 function print_noscript_style() {
     printf('<noscript><link rel="stylesheet" href="%s" /></noscript>',  get_template_directory_uri() . '/assets/css/noscript.css');
 }
- 
+
+function add_menus() {
+	$locations = array(
+		'primary'  => __( 'Desktop Primary Menu Links', 'forty' ),
+		'actions' => __( 'Desktop Primary Menu Actions', 'forty' ),
+		'social'   => __( 'Social Menu', 'forty' ),
+	);
+
+	register_nav_menus( $locations );
+}
+
+function add_menu_classes($atts, $item, $args) {
+    // @TODO: Add special cases to check for to add 'primary' to buttons?
+    if ($args->menu == 'actions') {
+        $atts['class'] = 'button fit';
+    }
+    return $atts;
+}
+
+add_action( 'init', 'add_menus' );
+add_filter( 'nav_menu_link_attributes', 'add_menu_classes', 1, 3 );
 add_action( 'wp_enqueue_scripts', 'enqueue_styles' );
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
 add_action( 'wp_head', 'print_noscript_style' );
