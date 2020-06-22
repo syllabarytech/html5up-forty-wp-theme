@@ -2,7 +2,7 @@
 
 namespace SyllabaryDotTech\Theme\Forty;
 
-?><html class="no-js" <?php language_attributes(); ?>>
+?><html <?php language_attributes(); ?>>
 	<head>
 		<title><?php wp_title('&raquo;','true','right'); ?><?php bloginfo('name'); ?></title>
 		<meta charset="<?php bloginfo('charset'); ?>" />
@@ -18,7 +18,10 @@ namespace SyllabaryDotTech\Theme\Forty;
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<a href="index.html" class="logo"><strong>Forty</strong> <span>by HTML5 UP</span></a>
+						<a href="index.html" class="logo">
+							<strong><?php echo get_theme_mod('logo_text_primary', 'Forty') ?></strong>
+							<span><?php echo get_theme_mod('logo_text_secondary', 'By HTML5UP') ?></span>
+						</a>
 						<?php if ( has_nav_menu( 'primary' ) || has_nav_menu( 'actions' ) ) { ?>
 							<nav>
 								<a href="#menu">Menu</a>
