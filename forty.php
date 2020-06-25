@@ -18,8 +18,6 @@ class Forty extends Site {
         add_action( 'wp_enqueue_scripts', [$this, 'add_scripts'] );
         add_action( 'wp_head', [$this, 'add_noscript_styles'] );
 
-        add_filter( 'nav_menu_link_attributes', [$this, 'add_menu_classes'], 1, 3 );
-
 		parent::__construct();
     }
     
@@ -30,7 +28,10 @@ class Forty extends Site {
     }
     
 	public function add_to_context($context) {
-		$context['menu']  = new Menu();
+		$context['menu']['primary'] = new Menu('primary');
+		$context['menu']['actions'] = new Menu('actions');
+        $context['menu']['social'] = new Menu('social');
+
         $context['site']  = $this;
 
 		return $context;
@@ -60,7 +61,7 @@ class Forty extends Site {
         printf('<noscript><link rel="stylesheet" href="%s" /></noscript>',  get_template_directory_uri() . '/assets/css/noscript.css');
     }
 
-    public function forty_add_menus() {
+    public function add_menus() {
         $locations = array(
             'primary'  => __( 'Desktop Primary Menu Links', 'forty' ),
             'actions' => __( 'Desktop Primary Menu Actions', 'forty' ),
@@ -68,14 +69,6 @@ class Forty extends Site {
         );
 
         register_nav_menus( $locations );
-    }
-
-    public function add_menu_classes($atts, $item, $args) {
-        // @TODO: Add special cases to check for to add 'primary' to buttons?
-        if ($args->menu == 'actions') {
-            $atts['class'] = 'button fit';
-        }
-        return $atts;
     }
 
     public function add_theme_settings($wpc) {
