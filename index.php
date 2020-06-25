@@ -2,33 +2,20 @@
 
 namespace SyllabaryDotTech\Theme\Forty;
 
-get_header();
-?>
- 
-<!-- Main -->
-    <div id="main" class="alt">
+use Timber;
+use Timber\PostQuery;
 
-        <?php
-			if ( have_posts() ) {
-                while ( have_posts() ) {
-                    the_post();
-        ?>
+$context = Timber::context();
+$context['posts'] = new PostQuery();
 
-            <section id="one">
-                <div class="inner">
-                    <header class="major">
-                        <?php the_title('<h1>', '</h1>'); ?>
-                    </header>
-                    <?php the_content(); ?>
-                </div>
-            </section>
+$templates = ['index.twig'];
 
-        <?php
-                }
-            }
-        ?>
+if (is_front_page()) {
+    $templates = ['front-page.twig', ...$templates];
+}
 
-    </div>
+if (is_home()) {
+    $templates = ['home.twig', ...$templates];
+}
 
-<?php
-get_footer();
+Timber::render($templates, $context);

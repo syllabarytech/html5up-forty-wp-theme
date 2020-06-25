@@ -1,0 +1,49 @@
+{% block html_head_container %}
+    {% include 'html-header.twig' %}
+{% endblock %}
+
+<body class="{{ body_class }} is-preload" data-template="base.twig">
+    {{ function('wp_body_open') }}
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+            <header id="header" class="alt">
+                <a href="index.html" class="logo">
+                    {# @TODO: Try to move these function calls out of the template #}
+                    <strong>{{ function('get_theme_mod', 'logo_text_primary', 'Forty') }}</strong>
+                    <span>{{ function('get_theme_mod', 'logo_text_secondary', 'By HTML5UP') }}</span>
+                </a>
+                {# @TODO: Try to move these function calls out of the template #}
+                {% if function('has_nav_menu', 'primary') or function('has_nav_menu', 'actions') %}
+                    <nav>
+                        <a href="#menu">Menu</a>
+                    </nav>
+                {% endif %}
+            </header>
+
+        <!-- Menu -->
+            {# @TODO: Try to move these function calls out of the template #}
+            {% if function('has_nav_menu', 'primary') or function('has_nav_menu', 'actions') %}
+                <nav id="menu">
+                    {% if function('has_nav_menu', 'primary') %}
+                        {{ function('wp_nav_menu', {'menu': 'primary', 'menu_class': 'links', 'container': false, 'fallback_cb': false}) }}
+                    {% endif %}
+
+                    {% if function('has_nav_menu', 'actions') %}
+                        {{ function('wp_nav_menu', {'menu': 'actions', 'menu_class': 'actions stacked', 'container': false, 'fallback_cb': false}) }}
+                    {% endif %}
+                </nav>
+            {% endif %}
+
+        <!-- Main -->
+            <div id="main" class="alt">
+
+                {% block content %}
+                    Sorry, no content
+                {% endblock %}
+
+            </div>
+
+        {{ function('get_footer') }}

@@ -1,0 +1,14 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    {% for post in posts %}
+        <section id="one">
+            <div class="inner">
+                <header class="major">
+                    {{ post.title }}
+                </header>
+                {{ post.content }}
+            </div>
+        </section>
+    {% endfor %}
+{% endblock %}
