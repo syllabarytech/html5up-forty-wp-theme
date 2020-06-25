@@ -1,8 +1,12 @@
 <?php
 
-if (file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
-    require $composer;
-}
+namespace SyllabaryDotTech\Theme\Forty;
+
+use Timber\Timber;
+
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$timber = new Timber();
 
 function forty_enqueue_styles() {
     wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/assets/css/fontawesome-all.min.css', false );
@@ -60,10 +64,10 @@ function forty_add_theme_settings($wpc) {
     ]));
 }
 
-add_action( 'customize_register', 'forty_add_theme_settings' );
-add_action( 'init', 'forty_add_menus' );
-add_action( 'wp_enqueue_scripts', 'forty_enqueue_styles' );
-add_action( 'wp_enqueue_scripts', 'forty_enqueue_scripts' );
-add_action( 'wp_head', 'forty_print_noscript_style' );
+add_action( 'customize_register', 'SyllabaryDotTech\Theme\Forty\forty_add_theme_settings' );
+add_action( 'init', 'SyllabaryDotTech\Theme\Forty\forty_add_menus' );
+add_action( 'wp_enqueue_scripts', 'SyllabaryDotTech\Theme\Forty\forty_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'SyllabaryDotTech\Theme\Forty\forty_enqueue_scripts' );
+add_action( 'wp_head', 'SyllabaryDotTech\Theme\Forty\forty_print_noscript_style' );
 
-add_filter( 'nav_menu_link_attributes', 'forty_add_menu_classes', 1, 3 );
+add_filter( 'nav_menu_link_attributes', 'SyllabaryDotTech\Theme\Forty\forty_add_menu_classes', 1, 3 );
