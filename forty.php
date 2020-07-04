@@ -4,41 +4,83 @@ namespace SyllabaryDotTech\Theme\Forty;
 
 use Timber\Menu;
 use Timber\Site;
+use WP_Customize_Control;
 
 class Forty extends Site {
-	public function __construct() {
-		add_filter( 'timber/context', [$this, 'add_to_context'] );
-		add_filter( 'timber/twig', [$this, 'add_to_twig'] );
-		add_action( 'init', [$this, 'register_post_types'] );
-        add_action( 'init', [$this, 'register_taxonomies'] );
-        add_action( 'init', [$this, 'add_menus'] );
+    public function __construct() {
+        add_filter('timber/context', [$this, 'add_to_context']);
+        add_filter('timber/twig', [$this, 'add_to_twig']);
+        add_filter('block_categories', [$this, 'register_block_categories'], 10, 1);
 
-        add_action( 'customize_register', [$this, 'add_theme_settings'] );
-        add_action( 'wp_enqueue_scripts', [$this, 'add_styles'] );
-        add_action( 'wp_enqueue_scripts', [$this, 'add_scripts'] );
-        add_action( 'wp_head', [$this, 'add_noscript_styles'] );
+        add_action('init', [$this, 'register_post_types']);
+        add_action('init', [$this, 'register_taxonomies']);
+        add_action('init', [$this, 'register_blocks']);
+        add_action('init', [$this, 'add_menus']);
 
-		parent::__construct();
+        add_action('customize_register', [$this, 'add_theme_settings']);
+        add_action('wp_enqueue_scripts', [$this, 'add_styles']);
+        add_action('wp_enqueue_scripts', [$this, 'add_scripts']);
+        add_action('wp_head', [$this, 'add_noscript_styles']);
+
+        parent::__construct();
     }
     
-	public function register_post_types() {
+    public function register_post_types() {
     }
 
-	public function register_taxonomies() {
+    public function register_taxonomies() {
+    }
+
+    public function register_block_categories($categories) {
+        // Use unshift here to put this category before the rest
+        array_unshift($categories, [
+            'slug' => 'forty-theme',
+            'title' => sprintf('%s (%s)', __('Forty'), __('Theme')),
+            'icon' => 'admin-appearance',
+        ]);
+
+        return $categories;
+    }
+
+    public function register_blocks() {
+        if (!function_exists('register_block_type')) {
+            return;
+        }
+
+        // @TODO: Maybe look into block style varaitions for sections
+        $blocks = [
+            'banner' => ['wp-blocks', 'wp-element'],
+
+            'spotlights' => ['wp-blocks', 'wp-element'],
+            'spotlight' => ['wp-blocks', 'wp-element'],
+
+            'tiles' => ['wp-blocks', 'wp-element'],
+            'tile' => ['wp-blocks', 'wp-element'],
+        ];
+
+        foreach ($blocks as $block => $dependencies) {
+            $blockName = "forty/${block}";
+            $scriptName = "${block}-block";
+            $fileURI = get_template_directory_uri() . "/assets/blocks/${block}.js";
+            $blockConfiguration = ['editor_script' => $scriptName];
+
+            wp_register_script($scriptName, $fileURI, $dependencies);
+            register_block_type($blockName, $blockConfiguration);
+        }
     }
     
-	public function add_to_context($context) {
-		$context['menu']['primary'] = new Menu('primary');
-		$context['menu']['actions'] = new Menu('actions');
+    public function add_to_context($context) {
+        $context['menu']['primary'] = new Menu('primary');
+        $context['menu']['actions'] = new Menu('actions');
         $context['menu']['social'] = new Menu('social');
 
         $context['site']  = $this;
 
-		return $context;
+        return $context;
     }
     
-	public function add_to_twig($twig) {
-		return $twig;
+    public function add_to_twig($twig) {
+        return $twig;
     }
     
     public function add_styles() {
