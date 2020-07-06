@@ -2710,7 +2710,7 @@ input, select, textarea {
 
 /* Tiles */
 
-	.tiles {
+	.wp-block-forty-tile-section {
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
@@ -2722,11 +2722,11 @@ input, select, textarea {
 		border-top: 0 !important;
 	}
 
-		.tiles + * {
+		.wp-block-forty-tile-section + * {
 			border-top: 0 !important;
 		}
 
-		.tiles article {
+		.wp-block-forty-tile-section article {
 			-moz-align-items: center;
 			-webkit-align-items: center;
 			-ms-align-items: center;
@@ -2752,24 +2752,24 @@ input, select, textarea {
 			width: 40%;
 		}
 
-			.tiles article .image {
+			.wp-block-forty-tile-section article .image {
 				display: none;
 			}
 
-			.tiles article header {
+			.wp-block-forty-tile-section article header {
 				position: relative;
 				z-index: 3;
 			}
 
-			.tiles article h3 {
+			.wp-block-forty-tile-section article h3 {
 				font-size: 1.75em;
 			}
 
-				.tiles article h3 a:hover {
+				.wp-block-forty-tile-section article h3 a:hover {
 					color: inherit !important;
 				}
 
-			.tiles article .link.primary {
+			.wp-block-forty-tile-section article .link.primary {
 				border: 0;
 				height: 100%;
 				left: 0;
@@ -2779,7 +2779,7 @@ input, select, textarea {
 				z-index: 4;
 			}
 
-			.tiles article:before {
+			.wp-block-forty-tile-section article:before {
 				-moz-transition: opacity 0.5s ease;
 				-webkit-transition: opacity 0.5s ease;
 				-ms-transition: opacity 0.5s ease;
@@ -2795,7 +2795,7 @@ input, select, textarea {
 				z-index: 2;
 			}
 
-			.tiles article:after {
+			.wp-block-forty-tile-section article:after {
 				background-color: rgba(36, 41, 67, 0.25);
 				content: '';
 				display: block;
@@ -2807,11 +2807,11 @@ input, select, textarea {
 				z-index: 1;
 			}
 
-			.tiles article:hover:before {
+			.wp-block-forty-tile-section article:hover:before {
 				opacity: 0;
 			}
 
-			.tiles article.is-transitioning {
+			.wp-block-forty-tile-section article.is-transitioning {
 				-moz-transform: scale(0.95);
 				-webkit-transform: scale(0.95);
 				-ms-transform: scale(0.95);
@@ -2823,37 +2823,37 @@ input, select, textarea {
 				opacity: 0;
 			}
 
-			.tiles article:nth-child(4n - 1), .tiles article:nth-child(4n - 2) {
+			.wp-block-forty-tile-section article:nth-child(4n - 1), .wp-block-forty-tile-section article:nth-child(4n - 2) {
 				width: 60%;
 			}
 
-			.tiles article:nth-child(6n - 5):before {
+			.wp-block-forty-tile-section article:nth-child(6n - 5):before {
 				background-color: #6fc3df;
 			}
 
-			.tiles article:nth-child(6n - 4):before {
+			.wp-block-forty-tile-section article:nth-child(6n - 4):before {
 				background-color: #8d82c4;
 			}
 
-			.tiles article:nth-child(6n - 3):before {
+			.wp-block-forty-tile-section article:nth-child(6n - 3):before {
 				background-color: #ec8d81;
 			}
 
-			.tiles article:nth-child(6n - 2):before {
+			.wp-block-forty-tile-section article:nth-child(6n - 2):before {
 				background-color: #e7b788;
 			}
 
-			.tiles article:nth-child(6n - 1):before {
+			.wp-block-forty-tile-section article:nth-child(6n - 1):before {
 				background-color: #8ea9e8;
 			}
 
-			.tiles article:nth-child(6n):before {
+			.wp-block-forty-tile-section article:nth-child(6n):before {
 				background-color: #87c5a4;
 			}
 
 		@media screen and (max-width: 1280px) {
 
-			.tiles article {
+			.wp-block-forty-tile-section article {
 				padding: 4em 3em 2em 3em ;
 				height: 30vh;
 				max-height: 30em;
@@ -2864,7 +2864,7 @@ input, select, textarea {
 
 		@media screen and (max-width: 980px) {
 
-			.tiles article {
+			.wp-block-forty-tile-section article {
 				width: 50% !important;
 			}
 
@@ -2872,14 +2872,14 @@ input, select, textarea {
 
 		@media screen and (max-width: 736px) {
 
-			.tiles article {
+			.wp-block-forty-tile-section article {
 				padding: 3em 1.5em 1em 1.5em ;
 				height: 16em;
 				max-height: none;
 				min-height: 0;
 			}
 
-				.tiles article h3 {
+				.wp-block-forty-tile-section article h3 {
 					font-size: 1.5em;
 				}
 
@@ -2887,11 +2887,11 @@ input, select, textarea {
 
 		@media screen and (max-width: 480px) {
 
-			.tiles {
+			.wp-block-forty-tile-section {
 				display: block;
 			}
 
-				.tiles article {
+				.wp-block-forty-tile-section article {
 					height: 20em;
 					width: 100% !important;
 				}

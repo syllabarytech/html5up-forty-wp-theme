@@ -1,4 +1,4 @@
-(function(blocks, element) {
+(function(blocks, components, element) {
     var el = element.createElement;
  
     var blockStyle = {
@@ -32,5 +32,6 @@
     );
 }(
     window.wp.blocks,
+    window.wp.components,
     window.wp.element
 ));

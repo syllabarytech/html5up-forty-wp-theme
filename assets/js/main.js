@@ -117,7 +117,7 @@
 		});
 
 	// Tiles.
-		var $tiles = $('.tiles > article');
+		var $tiles = $('.wp-block-forty-tile-section > article');
 
 		$tiles.each(function() {
 

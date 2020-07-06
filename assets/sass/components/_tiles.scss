@@ -6,7 +6,7 @@
 
 /* Tiles */
 
-	.tiles {
+	.wp-block-forty-tile-section {
 		@include vendor('display', 'flex');
 		@include vendor('flex-wrap', 'wrap');
 		border-top: 0 !important;

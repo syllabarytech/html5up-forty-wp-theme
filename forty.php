@@ -47,15 +47,15 @@ class Forty extends Site {
             return;
         }
 
-        // @TODO: Maybe look into block style varaitions for sections
+        // @TODO: Maybe look into block style variations for sections
         $blocks = [
-            'banner' => ['wp-blocks', 'wp-element'],
+            'banner' => ['wp-blocks', 'wp-components', 'wp-element'],
 
-            'spotlights' => ['wp-blocks', 'wp-element'],
-            'spotlight' => ['wp-blocks', 'wp-element'],
+            'spotlights' => ['wp-blocks', 'wp-components', 'wp-element'],
+            'spotlight' => ['wp-blocks', 'wp-components', 'wp-element'],
 
-            'tiles' => ['wp-blocks', 'wp-element'],
-            'tile' => ['wp-blocks', 'wp-element'],
+            'tiles' => ['wp-blocks', 'wp-element', 'wp-block-editor'],
+            'tile' => ['wp-blocks', 'wp-components', 'wp-element', 'wp-editor'],
         ];
 
         foreach ($blocks as $block => $dependencies) {
