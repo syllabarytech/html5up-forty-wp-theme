@@ -1,0 +1,40 @@
+(function(blocks, element, blockEditor) {
+    var el = element.createElement;
+    var InnerBlocks = blockEditor.InnerBlocks;
+
+    blocks.registerBlockType(
+        'forty/main',
+        {
+            title: 'Main',
+            icon: 'align-center',
+            category: 'forty-theme',
+            example: {},
+            edit: function() {
+                return el(
+                    'section',
+                    null,
+                    el(
+                        'div',
+                        { className: 'inner' },
+                        el(InnerBlocks)
+                    )
+                );
+            },
+            save: function() {
+                return el(
+                    'section',
+                    null,
+                    el(
+                        'div',
+                        { className: 'inner' },
+                        el(InnerBlocks.Content)
+                    )
+                );
+            },
+        }
+    );
+}(
+    window.wp.blocks,
+    window.wp.element,
+    window.wp.blockEditor,
+) );

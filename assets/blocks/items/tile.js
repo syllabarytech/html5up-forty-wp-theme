@@ -4,6 +4,7 @@
 	var PlainText = editor.PlainText;
     var MediaUpload = editor.MediaUpload;
     var URLInputButton = editor.URLInputButton;
+    var Icon = components.Icon;
  
     blocks.registerBlockType(
         'forty/tile',
@@ -66,58 +67,76 @@
                     return props.setAttributes({content: value})
                 }
 
-                return el('article', null, [
-                    el(
-                        MediaUpload, {
-                            onSelect: updateImage,
-                            allowedTypes: 'image',
-                            value: props.attributes.mediaID,
-                            render: function( obj ) {
-                                return el(
-                                    components.Button,
-                                    {
-                                        className: props.attributes.mediaID
-                                            ? 'image-button'
-                                            : 'button button-large',
-                                        onClick: obj.open,
-                                    },
-                                    ! props.attributes.mediaID
-                                        ? 'Upload Image'
-                                        : el( 'img', { src: props.attributes.mediaURL } )
-                                );
+                return el(
+                    'article',
+                    {
+                        style: {
+                            backgroundImage: props.attributes.mediaID ? 'url(' + props.attributes.mediaURL + ')' : ''
+                        }
+                    },
+                    [
+                        el(
+                            'div',
+                            {
+                                style: {
+                                    display: 'flex',
+                                    flexDirection: 'row'
+                                }
                             },
-                        }
-                    ), el(
-                        'h3',
-                        null,
-                        [
-                            el(
-                                URLInputButton, {
-                                    url: props.attributes.link,
-                                    onChange: updateLink,
+                            [
+                                el(
+                                    MediaUpload, {
+                                        onSelect: updateImage,
+                                        allowedTypes: 'image',
+                                        value: props.attributes.mediaID,
+                                        render: function( obj ) {
+                                            return el(
+                                                components.Button,
+                                                {
+                                                    className: 'components-toolbar__control has-icon' + (props.attributes.mediaID ? ' is-pressed' : ''),
+                                                    onClick: obj.open,
+                                                },
+                                                el(
+                                                    Icon,
+                                                    {
+                                                        icon: 'format-image'
+                                                    }
+                                                )
+                                            );
+                                        },
+                                    }
+                                ), el(
+                                    URLInputButton,
+                                    {
+                                        url: props.attributes.link,
+                                        onChange: updateLink,
+                                    }
+                                )
+                            ]
+                        ), el(
+                            PlainText,
+                            {
+                                tagName: 'h3',
+                                inline: true,
+                                placeholder: 'Enter Heading Here',
+                                value: props.attributes.heading,
+                                onChange: updateHeading,
+                            }
+                        ), el(
+                            PlainText,
+                            {
+                                tagName: 'p',
+                                inline: true,
+                                placeholder: 'Enter Content Here',
+                                value: props.attributes.content,
+                                onChange: updateContent,
+                                style: {
+                                    background: 'transparent'
                                 }
-                            ), el(
-                                PlainText,
-                                {
-                                    tagName: 'h3',
-                                    inline: true,
-                                    placeholder: 'Enter Heading Here',
-                                    value: props.attributes.heading,
-                                    onChange: updateHeading,
-                                }
-                            )
-                        ]
-                    ), el(
-                        PlainText,
-                        {
-                            tagName: 'p',
-                            inline: true,
-                            placeholder: 'Enter Content Here',
-                            value: props.attributes.content,
-                            onChange: updateContent,
-                        }
-                    )
-                ]);
+                            }
+                        )
+                    ]
+                );
             },
             save: function(props) {
                 return el(

@@ -1,0 +1,151 @@
+.wp-block {
+    max-width: none;
+}
+
+.wp-block[data-type="forty/tile"] article {
+    padding: 4em 4em 2em 4em;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.wp-block[data-type="forty/tile"] {
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    cursor: default;
+    height: 40vh;
+    max-height: 40em;
+    min-height: 23em;
+    padding: unset;
+    margin: unset;
+    overflow: hidden;
+    position: relative;
+    width: 40%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.wp-block[data-type="forty/tile-section"] {
+    border-left: 1px solid #e2e4e7;
+    border-right: 1px solid #e2e4e7;
+}
+
+.wp-block[data-type="forty/tile-section"]:before {
+    content: "Section - Tiles";
+    display: block;
+    background: #f3f4f5;
+    border: 1px solid #e2e4e7;
+    padding: 0px 10px;
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.wp-block[data-type="forty/tile-section"]:after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid #e2e4e7;
+}
+
+.wp-block[data-type="forty/tile-section"] .block-editor-block-list__layout {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.wp-block[data-type="forty/tile"] button {
+    color: #ffffff;
+    position: relative;
+    z-index: 3;
+}
+
+.wp-block[data-type="forty/tile"] [tagname="h3"] {
+    color: #ffffff;
+    line-height: 1.4;
+    font-size: 1.56em;
+    background: transparent;
+    position: relative;
+    z-index: 3;
+}
+
+.wp-block[data-type="forty/tile"] [tagname="p"] {
+    color: #ffffff;
+    background: transparent;
+    position: relative;
+    z-index: 3;
+}
+
+.wp-block[data-type="forty/tile"]:before {
+    -moz-transition: opacity 0.5s ease;
+    -webkit-transition: opacity 0.5s ease;
+    -ms-transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0.85;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.wp-block[data-type="forty/tile"]:after {
+    background-color: rgba(36, 41, 67, 0.25);
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.wp-block[data-type="forty/tile"]:hover:before {
+    opacity: 0;
+}
+
+.wp-block[data-type="forty/tile"]:nth-child(4n - 1), .wp-block[data-type="forty/tile"]:nth-child(4n - 2) {
+    width: 60%;
+}
+
+.wp-block[data-type="forty/tile"]:nth-child(6n - 5):before {
+    background-color: #6fc3df;
+}
+
+.wp-block[data-type="forty/tile"]:nth-child(6n - 4):before {
+    background-color: #8d82c4;
+}
+
+.wp-block[data-type="forty/tile"]:nth-child(6n - 3):before {
+    background-color: #ec8d81;
+}
+
+.wp-block[data-type="forty/tile"]:nth-child(6n - 2):before {
+    background-color: #e7b788;
+}
+
+.wp-block[data-type="forty/tile"]:nth-child(6n - 1):before {
+    background-color: #8ea9e8;
+}
+
+.wp-block[data-type="forty/tile"]:nth-child(6n):before {
+    background-color: #87c5a4;
+}

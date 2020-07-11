@@ -21,6 +21,7 @@ class Forty extends Site {
         add_action('wp_enqueue_scripts', [$this, 'add_styles']);
         add_action('wp_enqueue_scripts', [$this, 'add_scripts']);
         add_action('wp_head', [$this, 'add_noscript_styles']);
+        add_action('enqueue_block_editor_assets', [$this, 'add_block_editor_styles']);
 
         parent::__construct();
     }
@@ -49,19 +50,34 @@ class Forty extends Site {
 
         // @TODO: Maybe look into block style variations for sections
         $blocks = [
-            'banner' => ['wp-blocks', 'wp-components', 'wp-element'],
+            'banner' => [
+                'file' => 'sections/banner.js',
+                'dependencies' => ['wp-blocks', 'wp-components', 'wp-element'],
+            ],
 
-            'spotlights' => ['wp-blocks', 'wp-components', 'wp-element'],
-            'spotlight' => ['wp-blocks', 'wp-components', 'wp-element'],
+            'spotlights' => [
+                'file' => 'sections/spotlight.js',
+                'dependencies' => ['wp-blocks', 'wp-components', 'wp-element'],
+            ],
+            'spotlight' => [
+                'file' => 'items/spotlight.js',
+                'dependencies' => ['wp-blocks', 'wp-components', 'wp-element'],
+            ],
 
-            'tiles' => ['wp-blocks', 'wp-element', 'wp-block-editor'],
-            'tile' => ['wp-blocks', 'wp-components', 'wp-element', 'wp-editor'],
+            'tiles' => [
+                'file' => 'sections/tiles.js',
+                'dependencies' => ['wp-blocks', 'wp-element', 'wp-block-editor'],
+            ],
+            'tile' => [
+                'file' => 'items/tile.js',
+                'dependencies' => ['wp-blocks', 'wp-components', 'wp-element', 'wp-editor'],
+            ],
         ];
 
-        foreach ($blocks as $block => $dependencies) {
+        foreach ($blocks as $block => ['file' => $file, 'dependencies' => $dependencies]) {
             $blockName = "forty/${block}";
             $scriptName = "${block}-block";
-            $fileURI = get_template_directory_uri() . "/assets/blocks/${block}.js";
+            $fileURI = get_template_directory_uri() . "/assets/blocks/${file}";
             $blockConfiguration = ['editor_script' => $scriptName];
 
             wp_register_script($scriptName, $fileURI, $dependencies);
@@ -101,6 +117,10 @@ class Forty extends Site {
 
     public function add_noscript_styles() {
         printf('<noscript><link rel="stylesheet" href="%s" /></noscript>',  get_template_directory_uri() . '/assets/css/noscript.css');
+    }
+
+    public function add_block_editor_styles() {
+        wp_enqueue_style( 'block-style', get_template_directory_uri() . '/block.style.css', false );
     }
 
     public function add_menus() {
