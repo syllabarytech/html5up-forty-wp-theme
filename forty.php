@@ -52,11 +52,11 @@ class Forty extends Site {
         $blocks = [
             'banner' => [
                 'file' => 'sections/banner.js',
-                'dependencies' => ['wp-blocks', 'wp-components', 'wp-element'],
+                'dependencies' => ['wp-blocks', 'wp-components', 'wp-element', 'wp-block-editor'],
             ],
 
             'spotlights' => [
-                'file' => 'sections/spotlight.js',
+                'file' => 'sections/spotlights.js',
                 'dependencies' => ['wp-blocks', 'wp-components', 'wp-element'],
             ],
             'spotlight' => [
@@ -70,7 +70,7 @@ class Forty extends Site {
             ],
             'tile' => [
                 'file' => 'items/tile.js',
-                'dependencies' => ['wp-blocks', 'wp-components', 'wp-element', 'wp-editor'],
+                'dependencies' => ['wp-blocks', 'wp-components', 'wp-element', 'wp-block-editor'],
             ],
         ];
 

@@ -1,10 +1,10 @@
-(function(blocks, components, element, editor) {
+(function(blocks, components, element, blockEditor) {
     var el = element.createElement; 
-	var RichText = editor.RichText;
-	var PlainText = editor.PlainText;
-    var MediaUpload = editor.MediaUpload;
-    var URLInputButton = editor.URLInputButton;
+	var PlainText = blockEditor.PlainText;
+    var MediaUpload = blockEditor.MediaUpload;
+    var URLInputButton = blockEditor.URLInputButton;
     var Icon = components.Icon;
+    var Button = components.Button;
  
     blocks.registerBlockType(
         'forty/tile',
@@ -91,7 +91,7 @@
                                         value: props.attributes.mediaID,
                                         render: function( obj ) {
                                             return el(
-                                                components.Button,
+                                                Button,
                                                 {
                                                     className: 'components-toolbar__control has-icon' + (props.attributes.mediaID ? ' is-pressed' : ''),
                                                     onClick: obj.open,
@@ -188,5 +188,5 @@
     window.wp.blocks,
     window.wp.components,
     window.wp.element,
-    window.wp.editor,
+    window.wp.blockEditor,
 ) );
