@@ -1,11 +1,6 @@
-(function(blocks, components, element) {
+(function(blocks, element, blockEditor) {
     var el = element.createElement;
- 
-    var blockStyle = {
-        backgroundColor: '#900',
-        color: '#fff',
-        padding: '20px',
-    };
+    var InnerBlocks = blockEditor.InnerBlocks;
  
     blocks.registerBlockType(
         'forty/spotlight-section',
@@ -40,6 +35,6 @@
     );
 }(
     window.wp.blocks,
-    window.wp.components,
-    window.wp.element
+    window.wp.element,
+    window.wp.blockEditor
 ) );

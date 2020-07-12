@@ -15,19 +15,9 @@
             category: 'forty-theme',
             parent: ['forty/spotlight-section'],
             example: {},
-            edit: function() {
-                return el(
-                    'p',
-                    { style: blockStyle },
-                    'Hello World, step 1 (from the editor).'
-                );
+            edit: function(props) {
             },
-            save: function() {
-                return el(
-                    'p',
-                    { style: blockStyle },
-                    'Hello World, step 1 (from the frontend).'
-                );
+            save: function(props) {
             },
         }
     );
@@ -36,3 +26,20 @@
     window.wp.components,
     window.wp.element
 ) );
+
+/* <section>
+    <a href="generic.html" class="image">
+        <img src="images/pic08.jpg" alt="" data-position="center center" />
+    </a>
+    <div class="content">
+        <div class="inner">
+            <header class="major">
+                <h3>Orci maecenas</h3>
+            </header>
+            <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
+            <ul class="actions">
+                <li><a href="generic.html" class="button">Learn more</a></li>
+            </ul>
+        </div>
+    </div>
+</section> */

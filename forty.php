@@ -65,9 +65,14 @@ class Forty extends Site {
                 'dependencies' => ['wp-blocks', 'wp-element', 'wp-block-editor'],
             ],
 
+            'heading' => [
+                'file' => 'heading.js',
+                'dependencies' => ['wp-blocks', 'wp-components', 'wp-element', 'wp-block-editor', 'wp-keycodes'],
+            ],
+
             'spotlights' => [
                 'file' => 'sections/spotlights.js',
-                'dependencies' => ['wp-blocks', 'wp-components', 'wp-element'],
+                'dependencies' => ['wp-blocks', 'wp-element', 'wp-block-editor'],
             ],
             'spotlight' => [
                 'file' => 'spotlight.js',
