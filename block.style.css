@@ -87,15 +87,20 @@
     right: 0;
 }
 
+.wp-block[data-type="forty/main"],
 .wp-block[data-type="forty/generic-section"],
 .wp-block[data-type="forty/tile-section"],
-.wp-block[data-type="forty/banner-section"] {
+.wp-block[data-type="forty/banner"] {
     border-left: 1px solid #e2e4e7;
     border-right: 1px solid #e2e4e7;
 }
 
-.wp-block[data-type="forty/banner-section"]::before {
-    content: "Section - Banner";
+.wp-block[data-type="forty/main"]::before {
+    content: "Main"
+}
+
+.wp-block[data-type="forty/banner"]::before {
+    content: "Banner";
     z-index: 3;
 }
 
@@ -107,9 +112,10 @@
     content: "Section - Generic";
 }
 
+.wp-block[data-type="forty/main"]::before,
 .wp-block[data-type="forty/generic-section"]::before,
 .wp-block[data-type="forty/tile-section"]::before,
-.wp-block[data-type="forty/banner-section"]::before {
+.wp-block[data-type="forty/banner"]::before {
     display: block;
     border: 1px solid #e2e4e7;
     padding: 0px 10px;
@@ -120,9 +126,10 @@
     right: 0;
 }
 
+.wp-block[data-type="forty/main"]::after,
 .wp-block[data-type="forty/generic-section"]::after,
 .wp-block[data-type="forty/tile-section"]::after,
-.wp-block[data-type="forty/banner-section"]::after {
+.wp-block[data-type="forty/banner"]::after {
     content: '';
     display: block;
     position: relative;
@@ -232,18 +239,18 @@ header.major::after {
     z-index: 3;
 }
 
-.wp-block[data-type="forty/banner-section"] header.major {
+.wp-block[data-type="forty/banner"] header.major {
     font-size: 3.25em;
 }
 
-.wp-block[data-type="forty/banner-section"] .content > p {
+.wp-block[data-type="forty/banner"] .content > p {
     font-size: 0.7em;
     font-weight: 600;
     letter-spacing: 0.25em;
     text-transform: uppercase;
 }
 
-.wp-block[data-type="forty/banner-section"]::after {
+.wp-block[data-type="forty/banner"]::after {
     background-color: #242943;
     content: '';
     display: block;
@@ -256,9 +263,9 @@ header.major::after {
     z-index: 1;
 }
 
-.wp-block[data-type="forty/banner-section"] button,
-.wp-block[data-type="forty/banner-section"] textarea,
-.wp-block[data-type="forty/banner-section"] .rich-text.block-editor-rich-text__editable
+.wp-block[data-type="forty/banner"] button,
+.wp-block[data-type="forty/banner"] textarea,
+.wp-block[data-type="forty/banner"] .rich-text.block-editor-rich-text__editable
 {
     position: relative;
     z-index: 3;
@@ -278,4 +285,8 @@ header.major::after {
 .block-editor-default-block-appender .block-editor-inserter .block-editor-inserter__toggle:not(:hover)
 {
     color: #ffffff;
+}
+
+.wp-block[data-type="forty/main"] {
+    background-color: #2a2f4a;
 }

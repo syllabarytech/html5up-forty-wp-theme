@@ -7,7 +7,7 @@
     var Button = components.Button;
  
     blocks.registerBlockType(
-        'forty/banner-section',
+        'forty/banner',
         {
             title: 'Banner',
             // description: '',
@@ -159,10 +159,12 @@
                             ), el(
                                 'div',
                                 {className: 'content'},
-                                el(
-                                    RichText.Content,
-                                    {tagName: 'p', value: props.attributes.content}
-                                )
+                                [
+                                    el(
+                                        RichText.Content,
+                                        {tagName: 'p', value: props.attributes.content}
+                                    ),
+                                ]
                             ),
                         ]
                     )

@@ -51,12 +51,12 @@ class Forty extends Site {
         // @TODO: Maybe look into block style variations for sections
         $blocks = [
             'banner' => [
-                'file' => 'items/banner.js',
+                'file' => 'banner.js',
                 'dependencies' => ['wp-blocks', 'wp-components', 'wp-element', 'wp-block-editor'],
             ],
 
             'main' => [
-                'file' => 'items/main.js',
+                'file' => 'main.js',
                 'dependencies' => ['wp-blocks', 'wp-element', 'wp-block-editor'],
             ],
 
@@ -70,7 +70,7 @@ class Forty extends Site {
                 'dependencies' => ['wp-blocks', 'wp-components', 'wp-element'],
             ],
             'spotlight' => [
-                'file' => 'items/spotlight.js',
+                'file' => 'spotlight.js',
                 'dependencies' => ['wp-blocks', 'wp-components', 'wp-element'],
             ],
 
@@ -79,7 +79,7 @@ class Forty extends Site {
                 'dependencies' => ['wp-blocks', 'wp-element', 'wp-block-editor'],
             ],
             'tile' => [
-                'file' => 'items/tile.js',
+                'file' => 'tile.js',
                 'dependencies' => ['wp-blocks', 'wp-components', 'wp-element', 'wp-block-editor'],
             ],
         ];
