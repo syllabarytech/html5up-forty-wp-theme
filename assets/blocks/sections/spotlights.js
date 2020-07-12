@@ -13,20 +13,28 @@
             title: 'Section - Spotlights',
             icon: 'excerpt-view',
             category: 'forty-theme',
+            parent: ['forty/main'],
             example: {},
-            edit: function() {
+            edit: function (props) {
                 return el(
-                    'p',
-                    { style: blockStyle },
-                    'Hello World, step 1 (from the editor).'
-                );
+                    'div',
+                    {className: props.className},
+                    el(
+                        InnerBlocks,
+                        {
+                            allowedBlocks: [
+                                'forty/spotlight',
+                            ],
+                        }
+                    )
+                )
             },
-            save: function() {
+            save: function (props) {
                 return el(
-                    'p',
-                    { style: blockStyle },
-                    'Hello World, step 1 (from the frontend).'
-                );
+                    'section',
+                    {className: props.className},
+                    el(InnerBlocks.Content)
+                )
             },
         }
     );

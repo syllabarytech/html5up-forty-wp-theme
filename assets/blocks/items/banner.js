@@ -9,7 +9,7 @@
     blocks.registerBlockType(
         'forty/banner-section',
         {
-            title: 'Section - Banner',
+            title: 'Banner',
             // description: '',
             icon: 'camera',
             category: 'forty-theme',

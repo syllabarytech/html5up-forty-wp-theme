@@ -13,6 +13,7 @@
             title: 'Spotlight',
             icon: 'align-left',
             category: 'forty-theme',
+            parent: ['forty/spotlight-section'],
             example: {},
             edit: function() {
                 return el(

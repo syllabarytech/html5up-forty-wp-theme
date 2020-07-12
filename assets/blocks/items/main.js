@@ -1,42 +1,41 @@
 (function(blocks, element, blockEditor) {
     var el = element.createElement;
     var InnerBlocks = blockEditor.InnerBlocks;
- 
+
     blocks.registerBlockType(
-        'forty/tile-section',
+        'forty/main',
         {
-            title: 'Section - Tiles',
-            icon: 'tablet',
+            title: 'Main',
+            icon: 'media-text',
             category: 'forty-theme',
-            parent: ['forty/main'],
-            attributes: {
-            },
             example: {},
-            edit: function (props) {
+            edit: function() {
                 return el(
                     'div',
-                    {className: props.className},
+                    {id: 'main'},
                     el(
                         InnerBlocks,
                         {
                             allowedBlocks: [
-                                'forty/tile',
+                                'forty/generic-section',
+                                'forty/spotlight-section',
+                                'forty/tile-section',
                             ],
                         }
                     )
-                )
+                );
             },
-            save: function (props) {
+            save: function() {
                 return el(
-                    'section',
-                    {className: props.className},
+                    'div',
+                    {id: 'main'},
                     el(InnerBlocks.Content)
-                )
+                );
             },
         }
     );
 }(
     window.wp.blocks,
     window.wp.element,
-    window.wp.blockEditor
+    window.wp.blockEditor,
 ) );

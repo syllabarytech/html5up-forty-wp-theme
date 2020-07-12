@@ -113,14 +113,18 @@
                                 )
                             ]
                         ), el(
-                            PlainText,
-                            {
-                                tagName: 'h3',
-                                inline: true,
-                                placeholder: 'Enter Heading Here',
-                                value: props.attributes.heading,
-                                onChange: updateHeading,
-                            }
+                            'header',
+                            {className: 'major'},
+                            el(
+                                PlainText,
+                                {
+                                    tagName: 'h3',
+                                    inline: true,
+                                    placeholder: 'Enter Heading Here',
+                                    value: props.attributes.heading,
+                                    onChange: updateHeading,
+                                }
+                            )
                         ), el(
                             PlainText,
                             {

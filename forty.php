@@ -51,8 +51,18 @@ class Forty extends Site {
         // @TODO: Maybe look into block style variations for sections
         $blocks = [
             'banner' => [
-                'file' => 'sections/banner.js',
+                'file' => 'items/banner.js',
                 'dependencies' => ['wp-blocks', 'wp-components', 'wp-element', 'wp-block-editor'],
+            ],
+
+            'main' => [
+                'file' => 'items/main.js',
+                'dependencies' => ['wp-blocks', 'wp-element', 'wp-block-editor'],
+            ],
+
+            'generic' => [
+                'file' => 'sections/generic.js',
+                'dependencies' => ['wp-blocks', 'wp-element', 'wp-block-editor'],
             ],
 
             'spotlights' => [

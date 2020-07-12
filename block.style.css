@@ -87,6 +87,7 @@
     right: 0;
 }
 
+.wp-block[data-type="forty/generic-section"],
 .wp-block[data-type="forty/tile-section"],
 .wp-block[data-type="forty/banner-section"] {
     border-left: 1px solid #e2e4e7;
@@ -102,6 +103,11 @@
     content: "Section - Tiles";
 }
 
+.wp-block[data-type="forty/generic-section"]::before {
+    content: "Section - Generic";
+}
+
+.wp-block[data-type="forty/generic-section"]::before,
 .wp-block[data-type="forty/tile-section"]::before,
 .wp-block[data-type="forty/banner-section"]::before {
     display: block;
@@ -114,6 +120,7 @@
     right: 0;
 }
 
+.wp-block[data-type="forty/generic-section"]::after,
 .wp-block[data-type="forty/tile-section"]::after,
 .wp-block[data-type="forty/banner-section"]::after {
     content: '';
