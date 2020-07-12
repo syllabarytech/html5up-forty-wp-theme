@@ -1,7 +1,10 @@
 (function(blocks, components, element, blockEditor) {
     var el = element.createElement;
+    var MediaUpload = blockEditor.MediaUpload;
 	var PlainText = blockEditor.PlainText;
-	var RichText = blockEditor.RichText;
+    var RichText = blockEditor.RichText;
+    var Icon = components.Icon;
+    var Button = components.Button;
  
     blocks.registerBlockType(
         'forty/banner-section',
@@ -11,6 +14,21 @@
             icon: 'camera',
             category: 'forty-theme',
             attributes: {
+                mediaID: {
+                    type: 'number',
+                },
+                mediaURL: {
+                    type: 'string',
+                    source: 'attribute',
+                    selector: 'img',
+                    attribute: 'src',
+                },
+                alt: {
+                    type: 'string',
+                    source: 'attribute',
+                    selector: 'img',
+                    attribute: 'alt',
+                },
                 heading: {
                     type: 'string',
                     source: 'text',
@@ -24,6 +42,13 @@
             },
             example: {},
             edit: function(props) {
+                var updateImage = function(value) {
+                    return props.setAttributes({
+                        mediaURL: value.url,
+                        mediaID: value.id,
+                        alt: value.alt,
+                    });
+                };
                 var updateHeading = function(value) {
                     return props.setAttributes({heading: value})
                 }
@@ -33,12 +58,39 @@
 
                 return el(
                     'section',
-                    {id: 'banner', className: 'major'},
+                    {
+                        id: 'banner',
+                        className: 'major',
+                        style: {
+                            backgroundImage: props.attributes.mediaID ? 'url(' + props.attributes.mediaURL + ')' : ''
+                        }
+                    },
                     el(
                         'div',
                         {className: 'inner'},
                         [
                             el(
+                                MediaUpload, {
+                                    onSelect: updateImage,
+                                    allowedTypes: 'image',
+                                    value: props.attributes.mediaID,
+                                    render: function( obj ) {
+                                        return el(
+                                            Button,
+                                            {
+                                                className: 'components-toolbar__control has-icon' + (props.attributes.mediaID ? ' is-pressed' : ''),
+                                                onClick: obj.open,
+                                            },
+                                            el(
+                                                Icon,
+                                                {
+                                                    icon: 'format-image'
+                                                }
+                                            )
+                                        );
+                                    },
+                                }
+                            ), el(
                                 'header',
                                 {className: 'major'},
                                 el(
@@ -84,7 +136,19 @@
                         'div',
                         {className: 'inner'},
                         [
-                            el(
+                            props.attributes.mediaID ? el(
+                                'span',
+                                {
+                                    className: 'image'
+                                },
+                                el(
+                                    'img',
+                                    {
+                                        src: props.attributes.mediaURL,
+                                        alt: props.attributes.alt
+                                    }
+                                )
+                            ) : null, el(
                                 'header',
                                 {className: 'major'},
                                 el(

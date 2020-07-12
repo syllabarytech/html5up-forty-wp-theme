@@ -33,7 +33,7 @@
                 heading: {
                     type: 'string',
                     source: 'text',
-                    selector: 'a',
+                    selector: 'h3',
                 },
                 link: {
                     type: 'string',
@@ -50,7 +50,6 @@
             example: {},
             edit: function(props) {
                 var updateImage = function(value) {
-                    console.log(value);
                     return props.setAttributes({
                         mediaURL: value.url,
                         mediaID: value.id,
@@ -142,47 +141,50 @@
                 return el(
                     'article',
                     null,
-                    [el(
-                        'span',
-                        {
-                            className: 'image'
-                        },
+                    [
                         el(
-                            'img',
+                            'span',
                             {
-                                src: props.attributes.mediaURL,
-                                alt: props.attributes.alt
-                            }
-                        )
-                    ),
-                    el(
-                        'header',
-                        {
-                            className: 'major'
-                        },
-                        [
+                                className: 'image'
+                            },
                             el(
-                                'h3',
-                                null,
-                                el(
-                                    'a',
-                                    {
-                                        href: props.attributes.link,
-                                        className: 'link',
-                                    },
-                                    props.attributes.heading
-                                )
-                            ),
-                            el(
-                                'p',
-                                null,
-                                props.attributes.content
+                                'img',
+                                {
+                                    src: props.attributes.mediaURL,
+                                    alt: props.attributes.alt
+                                }
                             )
-                        ]
-                    )]
+                        ), el(
+                            'header',
+                            {
+                                className: 'major'
+                            },
+                            [
+                                el(
+                                    'h3',
+                                    null,
+                                    props.attributes.link
+                                        ? el(
+                                            'a',
+                                            {
+                                                href: props.attributes.link,
+                                                className: 'link',
+                                            },
+                                            props.attributes.heading
+                                        )
+                                        : props.attributes.heading
+                                ),
+                                el(
+                                    'p',
+                                    null,
+                                    props.attributes.content
+                                )
+                            ]
+                        ),
+                    ]
                 );
             },
-        }
+        },
     );
 }(
     window.wp.blocks,
