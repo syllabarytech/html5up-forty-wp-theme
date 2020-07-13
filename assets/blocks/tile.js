@@ -146,14 +146,22 @@
                 );
             },
             save: function(props) {
+                var background = props.attributes.mediaID
+                  ? { backgroundImage: 'url(' + props.attributes.mediaURL + ')' }
+                  : {};
                 return el(
                     'article',
-                    null,
+                    {
+                        style: { ...background }
+                    },
                     [
-                        el(
+                        props.attributes.mediaID ? el(
                             'span',
                             {
-                                className: 'image'
+                                className: 'image',
+                                style: {
+                                    display: 'none'
+                                }
                             },
                             el(
                                 'img',
@@ -162,7 +170,7 @@
                                     alt: props.attributes.alt
                                 }
                             )
-                        ), el(
+                        ) : null, el(
                             'header',
                             {
                                 className: 'major'
