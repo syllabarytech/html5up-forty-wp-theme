@@ -4,7 +4,25 @@
     const { Dropdown, Path, SVG, Toolbar, ToolbarButton, ToolbarGroup  } = components;
     const { DOWN } = keycodes;
 
-    const HeadingIcon = function ({level, isActive = false}) {
+    const HeadingIcon = function () {
+        return el(
+            SVG,
+            {
+                width: '24',
+                height: '24',
+                viewBox: '-2 -2 24 24',
+                xmlns: 'http://www.w3.org/2000/svg',
+            },
+            el(
+                Path,
+                {
+                    d: 'M12.5 4v5.2h-5V4H5v13h2.5v-5.2h5V17H15V4'
+                }
+            )
+        );
+    }
+
+    const HeadingLevelIcon = function ({level, isActive = false}) {
         const levelToPath = {
             1: 'M9 5h2v10H9v-4H5v4H3V5h2v4h4V5zm6.6 0c-.6.9-1.5 1.7-2.6 2v1h2v7h2V5h-1.4z',
             2: 'M7 5h2v10H7v-4H3v4H1V5h2v4h4V5zm8 8c.5-.4.6-.6 1.1-1.1.4-.4.8-.8 1.2-1.3.3-.4.6-.8.9-1.3.2-.4.3-.8.3-1.3 0-.4-.1-.9-.3-1.3-.2-.4-.4-.7-.8-1-.3-.3-.7-.5-1.2-.6-.5-.2-1-.2-1.5-.2-.4 0-.7 0-1.1.1-.3.1-.7.2-1 .3-.3.1-.6.3-.9.5-.3.2-.6.4-.8.7l1.2 1.2c.3-.3.6-.5 1-.7.4-.2.7-.3 1.2-.3s.9.1 1.3.4c.3.3.5.7.5 1.1 0 .4-.1.8-.4 1.1-.3.5-.6.9-1 1.2-.4.4-1 .9-1.6 1.4-.6.5-1.4 1.1-2.2 1.6V15h8v-2H15z',
@@ -17,22 +35,20 @@
             return null;
         }
     
-        return (
+        return el(
+            SVG,
+            {
+                width: '24',
+                height: '24',
+                viewBox: '0 0 20 20',
+                xmlns: 'http://www.w3.org/2000/svg',
+                isPressed: isActive
+            },
             el(
-                SVG,
+                Path,
                 {
-                    width: '24',
-                    height: '24',
-                    viewBox: '0 0 20 20',
-                    xmlns: 'http://www.w3.org/2000/svg',
-                    isPressed: isActive
-                },
-                el(
-                    Path,
-                    {
-                        d: levelToPath[level]
-                    }
-                )
+                    d: levelToPath[level]
+                }
             )
         );
     }
@@ -41,7 +57,7 @@
         'forty/heading',
         {
             title: 'Heading',
-            icon: 'editor-quote',
+            icon: el(HeadingIcon),
             category: 'forty-theme',
             attributes: {
                 level: {
@@ -92,7 +108,7 @@
                                             ToolbarButton,
                                             {
                                                 icon: el(
-                                                    HeadingIcon,
+                                                    HeadingLevelIcon,
                                                     {
                                                         level: props.attributes.level
                                                     }
@@ -115,7 +131,7 @@
                                                         const isActive = targetLevel === props.attributes.level;
                                                         return {
                                                             icon: el(
-                                                                HeadingIcon,
+                                                                HeadingLevelIcon,
                                                                 {
                                                                     level: targetLevel,
                                                                     isActive
