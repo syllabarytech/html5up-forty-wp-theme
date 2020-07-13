@@ -342,9 +342,26 @@ header.major::after {
     width: unset;
 }
 
+.wp-block[data-type="forty/spotlight"] {
+    background-color: #2e3450;
+    margin: unset;
+}
+
+.wp-block[data-type="forty/spotlight"]:nth-child(2n) {
+    background-color: #333856;
+}
+
 .wp-block[data-type="forty/spotlight"] section {
     display: flex;
     flex-direction: row;
+}
+
+.wp-block[data-type="forty/spotlight"]:nth-child(2n) section {
+    flex-direction: row-reverse;
+}
+
+.wp-block[data-type="forty/spotlight"] section > .content {
+    width: 70%;
 }
 
 .wp-block[data-type="forty/spotlight"] section > .image {
