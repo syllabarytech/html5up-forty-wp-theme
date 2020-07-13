@@ -10,9 +10,13 @@
 
         {%- if media_id or heading or content -%}
             <!-- Banner -->
-            <section id="banner" class="major">
+            {%- if media_id -%}
+                <section id="banner" class="major" style="background-image: url({{media_url}})">
+            {%- else -%}
+                <section id="banner" class="major">
+            {%- endif -%}
                 {%- if media_id -%}
-                    <span class="image">
+                    <span class="image" style="display:none;">
                         <img src="{{media_url}}" alt="{{media_alt}}">
                     </span>
                 {%- endif -%}
