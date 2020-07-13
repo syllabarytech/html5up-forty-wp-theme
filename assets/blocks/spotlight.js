@@ -14,6 +14,10 @@
             icon: 'align-left',
             category: 'forty-theme',
             parent: ['forty/spotlight-section'],
+            supports: {
+                anchor: true,
+                customClassName: false,
+            },
             example: {},
             edit: function(props) {
             },

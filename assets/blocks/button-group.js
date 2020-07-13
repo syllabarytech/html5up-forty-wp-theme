@@ -10,6 +10,10 @@
             category: 'forty-theme',
             attributes: {
             },
+            supports: {
+                anchor: true,
+                customClassName: false,
+            },
             example: {},
             edit: function (props) {
                 return el(

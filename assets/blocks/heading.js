@@ -71,6 +71,10 @@
                     default: '',
                 },
             },
+            supports: {
+                anchor: true,
+                customClassName: false,
+            },
             example: {},
             edit: function(props) {
                 var updateHeading = function(value) {

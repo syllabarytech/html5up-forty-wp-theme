@@ -8,6 +8,10 @@
             title: 'Section - Spotlights',
             icon: 'excerpt-view',
             category: 'forty-theme',
+            supports: {
+                anchor: true,
+                customClassName: false,
+            },
             example: {},
             edit: function (props) {
                 return el(

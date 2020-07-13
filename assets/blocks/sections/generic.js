@@ -8,6 +8,10 @@
             title: 'Section - Generic',
             icon: 'align-center',
             category: 'forty-theme',
+            supports: {
+                anchor: true,
+                customClassName: false,
+            },
             example: {},
             edit: function() {
                 return el(

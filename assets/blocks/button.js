@@ -11,6 +11,10 @@
             icon: 'tablet',
             category: 'forty-theme',
             parent: ['forty/button-group'],
+            supports: {
+                anchor: true,
+                customClassName: false,
+            },
             attributes: {
                 link: {
                     type: 'string',

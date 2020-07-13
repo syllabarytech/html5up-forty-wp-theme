@@ -14,6 +14,10 @@
             icon: 'tablet',
             category: 'forty-theme',
             parent: ['forty/tile-section'],
+            supports: {
+                anchor: true,
+                customClassName: false,
+            },
             attributes: {
                 mediaID: {
                     type: 'number',

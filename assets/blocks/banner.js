@@ -15,6 +15,11 @@
             // description: '',
             icon: 'camera',
             category: 'forty-theme',
+            supports: {
+                anchor: true,
+                customClassName: false,
+                multiple: false,
+            },
             example: {},
             edit: function(props) {
                 var postType = useSelect(
