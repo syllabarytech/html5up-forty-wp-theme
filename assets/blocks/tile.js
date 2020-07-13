@@ -70,12 +70,14 @@
                     return props.setAttributes({content: value})
                 }
 
+                var background = props.attributes.mediaID
+                  ? { backgroundImage: 'url(' + props.attributes.mediaURL + ')' }
+                  : {};
+
                 return el(
                     'article',
                     {
-                        style: {
-                            backgroundImage: props.attributes.mediaID ? 'url(' + props.attributes.mediaURL + ')' : ''
-                        }
+                        style: { ...background }
                     },
                     [
                         el(
