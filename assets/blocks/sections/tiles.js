@@ -8,7 +8,6 @@
             title: 'Section - Tiles',
             icon: 'tablet',
             category: 'forty-theme',
-            parent: ['forty/main'],
             attributes: {
             },
             example: {},

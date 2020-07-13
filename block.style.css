@@ -1,6 +1,6 @@
 .edit-post-visual-editor.editor-styles-wrapper
 {
-    background: #242943;
+    background-color: #2a2f4a;
     color: #ffffff;
     font-family: "Source Sans Pro", Helvetica, sans-serif;
     font-size: 17pt;
@@ -87,16 +87,11 @@
     right: 0;
 }
 
-.wp-block[data-type="forty/main"],
 .wp-block[data-type="forty/generic-section"],
 .wp-block[data-type="forty/tile-section"],
 .wp-block[data-type="forty/banner"] {
     border-left: 1px solid #e2e4e7;
     border-right: 1px solid #e2e4e7;
-}
-
-.wp-block[data-type="forty/main"]::before {
-    content: "Main"
 }
 
 .wp-block[data-type="forty/banner"]::before {
@@ -112,7 +107,6 @@
     content: "Section - Generic";
 }
 
-.wp-block[data-type="forty/main"]::before,
 .wp-block[data-type="forty/generic-section"]::before,
 .wp-block[data-type="forty/tile-section"]::before,
 .wp-block[data-type="forty/banner"]::before {
@@ -126,7 +120,6 @@
     right: 0;
 }
 
-.wp-block[data-type="forty/main"]::after,
 .wp-block[data-type="forty/generic-section"]::after,
 .wp-block[data-type="forty/tile-section"]::after,
 .wp-block[data-type="forty/banner"]::after {
@@ -239,6 +232,10 @@ header.major::after {
     z-index: 3;
 }
 
+.wp-block[data-type="forty/banner"] {
+    background: #242943;
+}
+
 .wp-block[data-type="forty/banner"] header.major {
     font-size: 3.25em;
 }
@@ -285,12 +282,4 @@ header.major::after {
 .block-editor-default-block-appender .block-editor-inserter .block-editor-inserter__toggle:not(:hover)
 {
     color: #ffffff;
-}
-
-.wp-block[data-type="forty/main"] {
-    background-color: #2a2f4a;
-}
-
-.wp-block[data-type="forty/main"] > #main > .block-editor-inner-blocks {
-    margin: 0 10px;
 }

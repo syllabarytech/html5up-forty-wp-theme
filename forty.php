@@ -64,11 +64,6 @@ class Forty extends Site {
                 'dependencies' => ['wp-blocks', 'wp-components', 'wp-element', 'wp-block-editor', 'wp-data', 'wp-core-data'],
             ],
 
-            'main' => [
-                'file' => 'main.js',
-                'dependencies' => ['wp-blocks', 'wp-element', 'wp-block-editor'],
-            ],
-
             'generic' => [
                 'file' => 'sections/generic.js',
                 'dependencies' => ['wp-blocks', 'wp-element', 'wp-block-editor'],

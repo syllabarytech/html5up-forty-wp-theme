@@ -8,7 +8,6 @@
             title: 'Section - Spotlights',
             icon: 'excerpt-view',
             category: 'forty-theme',
-            parent: ['forty/main'],
             example: {},
             edit: function (props) {
                 return el(

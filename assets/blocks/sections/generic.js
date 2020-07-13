@@ -8,7 +8,6 @@
             title: 'Section - Generic',
             icon: 'align-center',
             category: 'forty-theme',
-            parent: ['forty/main'],
             example: {},
             edit: function() {
                 return el(
