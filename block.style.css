@@ -290,3 +290,7 @@ header.major::after {
 .wp-block[data-type="forty/main"] {
     background-color: #2a2f4a;
 }
+
+.wp-block[data-type="forty/main"] > #main > .block-editor-inner-blocks {
+    margin: 0 10px;
+}
