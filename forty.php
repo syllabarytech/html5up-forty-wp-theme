@@ -15,6 +15,7 @@ class Forty extends Site {
         add_action('init', [$this, 'register_post_types']);
         add_action('init', [$this, 'register_taxonomies']);
         add_action('init', [$this, 'register_blocks']);
+        add_action('init', [$this, 'register_metadata']);
         add_action('init', [$this, 'add_menus']);
 
         add_action('customize_register', [$this, 'add_theme_settings']);
@@ -30,6 +31,14 @@ class Forty extends Site {
     }
 
     public function register_taxonomies() {
+    }
+
+    public function register_metadata() {
+        register_post_meta('', 'forty_banner_media_id', ['type' => 'number', 'single' => true, 'show_in_rest' => true]);
+        register_post_meta('', 'forty_banner_media_url', ['type' => 'string', 'single' => true, 'show_in_rest' => true]);
+        register_post_meta('', 'forty_banner_media_alt', ['type' => 'string', 'single' => true, 'show_in_rest' => true]);
+        register_post_meta('', 'forty_banner_heading', ['type' => 'string', 'single' => true, 'show_in_rest' => true]);
+        register_post_meta('', 'forty_banner_content', ['type' => 'string', 'single' => true, 'show_in_rest' => true]);
     }
 
     public function register_block_categories($categories) {
@@ -52,7 +61,7 @@ class Forty extends Site {
         $blocks = [
             'banner' => [
                 'file' => 'banner.js',
-                'dependencies' => ['wp-blocks', 'wp-components', 'wp-element', 'wp-block-editor'],
+                'dependencies' => ['wp-blocks', 'wp-components', 'wp-element', 'wp-block-editor', 'wp-data', 'wp-core-data'],
             ],
 
             'main' => [

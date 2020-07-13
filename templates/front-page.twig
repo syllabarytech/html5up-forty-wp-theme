@@ -2,6 +2,38 @@
 
 {% block content %}
     {% for post in posts %}
-        {{ post.content }}
+        {%- set media_id = post.meta('forty_banner_media_id') -%}
+        {%- set media_url = post.meta('forty_banner_media_url') -%}
+        {%- set media_alt = post.meta('forty_banner_media_alt') -%}
+        {%- set heading = post.meta('forty_banner_heading') -%}
+        {%- set content = post.meta('forty_banner_content') -%}
+
+        {%- if media_id or heading or content -%}
+            <!-- Banner -->
+            <section id="banner" class="major">
+                {%- if media_id -%}
+                    <span class="image">
+                        <img src="{{media_url}}" alt="{{media_alt}}">
+                    </span>
+                {%- endif -%}
+                <div class="inner">
+                    {%- if heading -%}
+                        <header class="major">
+                            <h1>{{ heading }}</h1>
+                        </header>
+                    {%- endif -%}
+                    {%- if content -%}
+                        <div class="content">
+                            <p>{{ content }}</p>
+                        </div>
+                    {%- endif -%}
+                </div>
+            </section>
+        {% endif %}
+
+        <!-- Content -->
+        <div id="main">
+            {{ post.content }}
+        </div>
     {% endfor %}
 {% endblock %}
