@@ -41,7 +41,7 @@
                     'li',
                     null,
                     el(
-                        'a',
+                        'span',
                         {className: 'button'},
                         [
                             el(

@@ -73,13 +73,25 @@
                 var updateContent = function(value) {
                     return props.setAttributes({content: value})
                 }
+                var updateButtonText = function(value) {
+                    return props.setAttributes({buttonText: value})
+                }
 
                 return el(
                     'section',
                     null,
                     [
                         el(
-                            'span'
+                            'span',
+                            { className: 'image' },
+                            el(
+                                'img',
+                                {
+                                    src: props.attributes.mediaURL,
+                                    alt: props.attributes.alt,
+                                    dataPosition: 'center center'
+                                }
+                            )
                         ), el(
                             'div',
                             { className: 'content' },
@@ -153,6 +165,23 @@
                                                 background: 'transparent'
                                             }
                                         }
+                                    ), el(
+                                        'span',
+                                        {
+                                            className: props.attributes.buttonText ? 'button' : ''
+                                        },
+                                        el(
+                                            PlainText,
+                                            {
+                                                inline: true,
+                                                placeholder: 'Enter Button Text Here',
+                                                value: props.attributes.buttonText,
+                                                onChange: updateButtonText,
+                                                style: {
+                                                    background: 'transparent'
+                                                }
+                                            }
+                                        )
                                     ),
                                 ]
                             )

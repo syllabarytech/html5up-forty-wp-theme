@@ -89,11 +89,16 @@
     right: 0;
 }
 
+.wp-block[data-type="forty/spotlight-section"],
 .wp-block[data-type="forty/generic-section"],
 .wp-block[data-type="forty/tile-section"],
 .wp-block[data-type="forty/banner"] {
     border-left: 1px solid #e2e4e7;
     border-right: 1px solid #e2e4e7;
+}
+
+.wp-block[data-type="forty/spotlight-section"]::before {
+    content: "Section - Spotlights";
 }
 
 .wp-block[data-type="forty/banner"]::before {
@@ -109,6 +114,7 @@
     content: "Section - Generic";
 }
 
+.wp-block[data-type="forty/spotlight-section"]::before,
 .wp-block[data-type="forty/generic-section"]::before,
 .wp-block[data-type="forty/tile-section"]::before,
 .wp-block[data-type="forty/banner"]::before {
@@ -122,6 +128,7 @@
     right: 0;
 }
 
+.wp-block[data-type="forty/spotlight-section"]::after,
 .wp-block[data-type="forty/generic-section"]::after,
 .wp-block[data-type="forty/tile-section"]::after,
 .wp-block[data-type="forty/banner"]::after {
@@ -300,7 +307,8 @@ header.major::after {
     vertical-align: middle;
 }
 
-.wp-block[data-type="forty/button"] a.button {
+.wp-block[data-type="forty/spotlight"] .button,
+.wp-block[data-type="forty/button"] .button {
     display: inline-flex;
     background-color: transparent;
     border: 0;
@@ -319,14 +327,37 @@ header.major::after {
     white-space: nowrap;
 }
 
-.wp-block[data-type="forty/button"] a.button > * {
+.wp-block[data-type="forty/spotlight"] .button > *,
+.wp-block[data-type="forty/button"] .button > * {
     display: inherit;
 }
 
-.wp-block[data-type="forty/button"] a.button button {
+.wp-block[data-type="forty/spotlight"] .button button,
+.wp-block[data-type="forty/button"] .button button {
     margin: auto;
 }
 
+.wp-block[data-type="forty/spotlight-section"] .block-editor-button-block-appender,
 .wp-block[data-type="forty/button-group"] .block-editor-button-block-appender {
     width: unset;
+}
+
+.wp-block[data-type="forty/spotlight"] section {
+    display: flex;
+    flex-direction: row;
+}
+
+.wp-block[data-type="forty/spotlight"] section > .image {
+    background-position: center center;
+    background-size: cover;
+    border-radius: 0;
+    display: block;
+    position: relative;
+    width: 30%;
+}
+
+.wp-block[data-type="forty/spotlight"] section > .image img {
+    border-radius: 0;
+    display: block;
+    width: 100%;
 }
