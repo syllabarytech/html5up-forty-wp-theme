@@ -116,7 +116,6 @@ class Forty extends Site {
     public function add_to_context($context) {
         $context['menu']['primary'] = new Menu('primary');
         $context['menu']['actions'] = new Menu('actions');
-        $context['menu']['social'] = new Menu('social');
 
         $context['site']  = $this;
 
@@ -155,26 +154,133 @@ class Forty extends Site {
         $locations = array(
             'primary'  => __( 'Desktop Primary Menu Links', 'forty' ),
             'actions' => __( 'Desktop Primary Menu Actions', 'forty' ),
-            'social'   => __( 'Social Menu', 'forty' ),
         );
 
         register_nav_menus( $locations );
     }
 
     public function add_theme_settings($wpc) {
-        $wpc->add_setting('logo_text_primary', ['default' => 'Forty', 'type' => 'theme_mod']);
-        $wpc->add_setting('logo_text_secondary', ['default' => 'By HTML5UP', 'type' => 'theme_mod']);
+        // $wpc->add_section('footer', ['title' => 'Footer Configuration']);
+        $wpc->add_panel('footer', [
+            'title' => 'Footer Configuration',
+            'description' => 'This panel is used for managing the content displayed in the site footer.'
+        ]);
 
-        $wpc->add_control(new WP_Customize_Control($wpc, 'logo_text_primary', [
-            'label' => __('Primary Logo Text', 'forty'),
-            'section' => 'title_tagline',
-            'settings' => 'logo_text_primary',
+        $wpc->add_section('footer_contact', [
+            'title' => 'Contact Details',
+            'description' => 'Your contact information displayed in the site footer.',
+            'panel' => 'footer',
+        ]);
+        $wpc->add_setting('footer_contact_email', ['default' => '', 'type' => 'theme_mod']);
+        $wpc->add_setting('footer_contact_phone', ['default' => '', 'type' => 'theme_mod']);
+        $wpc->add_setting('footer_contact_address', ['default' => '', 'type' => 'theme_mod']);
+
+        $wpc->add_section('footer_social', [
+            'title' => 'Social Media Accounts',
+            'description' => 'Your social media accounts to link in the site footer.',
+            'panel' => 'footer',
+        ]);
+        $wpc->add_setting('footer_social_twitter', ['default' => '', 'type' => 'theme_mod']);
+        $wpc->add_setting('footer_social_facebook', ['default' => '', 'type' => 'theme_mod']);
+        $wpc->add_setting('footer_social_instagram', ['default' => '', 'type' => 'theme_mod']);
+        $wpc->add_setting('footer_social_github', ['default' => '', 'type' => 'theme_mod']);
+        $wpc->add_setting('footer_social_linkedin', ['default' => '', 'type' => 'theme_mod']);
+
+        $wpc->add_section('footer_attributions', [
+            'title' => 'Attributions',
+            'description' => 'Attribution details.',
+            'panel' => 'footer',
+        ]);
+        $wpc->add_setting('footer_attribution_html5up', ['default' => true, 'type' => 'theme_mod']);
+        $wpc->add_setting('footer_attribution_syllabary', ['default' => true, 'type' => 'theme_mod']);
+
+        $wpc->add_section('footer_copyright', [
+            'title' => 'Copyright',
+            'panel' => 'footer',
+        ]);
+        $wpc->add_setting('footer_copyright', ['default' => '', 'type' => 'theme_mod']);
+
+        $wpc->add_control(new WP_Customize_Control($wpc, 'footer_contact_email', [
+            'label' => 'Email',
+            'section' => 'footer_contact',
+            'settings' => 'footer_contact_email',
             'type' => 'text'
         ]));
-        $wpc->add_control(new WP_Customize_Control($wpc, 'logo_text_secondary', [
-            'label' => __('Secondary Logo Text', 'forty'),
-            'section' => 'title_tagline',
-            'settings' => 'logo_text_secondary',
+
+        $wpc->add_control(new WP_Customize_Control($wpc, 'footer_contact_phone', [
+            'label' => 'Phone',
+            'section' => 'footer_contact',
+            'settings' => 'footer_contact_phone',
+            'type' => 'text'
+        ]));
+
+        $wpc->add_control(new WP_Customize_Control($wpc, 'footer_contact_address', [
+            'label' => 'Address',
+            'section' => 'footer_contact',
+            'settings' => 'footer_contact_address',
+            'type' => 'textarea'
+        ]));
+
+        $wpc->add_control(new WP_Customize_Control($wpc, 'footer_social_twitter', [
+            'label' => 'Twitter Username',
+            'description' => 'https://twitter.com/<strong>[username]</strong>',
+            'section' => 'footer_social',
+            'settings' => 'footer_social_twitter',
+            'type' => 'text'
+        ]));
+
+        $wpc->add_control(new WP_Customize_Control($wpc, 'footer_social_facebook', [
+            'label' => 'Facebook Username',
+            'description' => 'https://www.facebook.com/<strong>[username]</strong>',
+            'section' => 'footer_social',
+            'settings' => 'footer_social_facebook',
+            'type' => 'text'
+        ]));
+
+        $wpc->add_control(new WP_Customize_Control($wpc, 'footer_social_instagram', [
+            'label' => 'Instagram Username',
+            'description' => 'https://www.instagram.com/<strong>[username]</strong>/',
+            'section' => 'footer_social',
+            'settings' => 'footer_social_instagram',
+            'type' => 'text'
+        ]));
+
+        $wpc->add_control(new WP_Customize_Control($wpc, 'footer_social_github', [
+            'label' => 'GitHub Username',
+            'description' => 'https://github.com/<strong>[username]</strong>/',
+            'section' => 'footer_social',
+            'settings' => 'footer_social_github',
+            'type' => 'text'
+        ]));
+
+        $wpc->add_control(new WP_Customize_Control($wpc, 'footer_social_linkedin', [
+            'label' => 'LinkedIn Username',
+            'description' => 'https://www.linkedin.com/in/<strong>[username]</strong>/',
+            'section' => 'footer_social',
+            'settings' => 'footer_social_linkedin',
+            'type' => 'text'
+        ]));
+
+        $wpc->add_control(new WP_Customize_Control($wpc, 'footer_attribution_html5up', [
+            'label' => 'HTML5UP Attribution',
+            'description' => 'Attribute design to <a href="https://html5up.net/">HTML5UP</a>. Required unless theme was purchased through <a href="https://pixelarity.com/">Pixelarity</a>.',
+            'section' => 'footer_attributions',
+            'settings' => 'footer_attribution_html5up',
+            'type' => 'checkbox'
+        ]));
+
+        $wpc->add_control(new WP_Customize_Control($wpc, 'footer_attribution_syllabary', [
+            'label' => 'Syllabary Attribution',
+            'description' => 'Attribute WordPress port to <a href="https://syllabary.tech/">Syllabary</a>. Optional.',
+            'section' => 'footer_attributions',
+            'settings' => 'footer_attribution_syllabary',
+            'type' => 'checkbox'
+        ]));
+
+        $wpc->add_control(new WP_Customize_Control($wpc, 'footer_copyright', [
+            'label' => 'Copyright Holder',
+            'section' => 'footer_copyright',
+            'settings' => 'footer_copyright',
             'type' => 'text'
         ]));
     }

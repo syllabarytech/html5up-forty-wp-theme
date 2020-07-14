@@ -11,9 +11,8 @@
         <!-- Header -->
             <header id="header" class="alt">
                 <a href="index.html" class="logo">
-                    {# @TODO: Try to move these function calls out of the template #}
-                    <strong>{{ function('get_theme_mod', 'logo_text_primary', 'Forty') }}</strong>
-                    <span>{{ function('get_theme_mod', 'logo_text_secondary', 'By HTML5UP') }}</span>
+                    <strong>{{ site.title }}</strong>
+                    <span>{{ site.description }}</span>
                 </a>
                 {%- if menu.primary.items|length > 0 or menu.actions.items|length > 0 -%}
                     <nav>
@@ -109,18 +108,53 @@
                 <footer id="footer">
                     <div class="inner">
                         <ul class="icons">
-                            <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-                            <li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-                            <li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-                            <li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-                            <li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+                            {%- if theme.theme_mod('footer_social_twitter') -%}
+                                <li>
+                                    <a href="https://twitter.com/{{ theme.theme_mod('footer_social_twitter') }}" class="icon brands alt fa-twitter">
+                                        <span class="label">Twitter</span>
+                                    </a>
+                                </li>
+                            {%- endif -%}
+                            {%- if theme.theme_mod('footer_social_facebook') -%}
+                                <li>
+                                    <a href="https://www.facebook.com/{{ theme.theme_mod('footer_social_facebook') }}" class="icon brands alt fa-facebook-f">
+                                        <span class="label">Facebook</span>
+                                    </a>
+                                </li>
+                            {%- endif -%}
+                            {%- if theme.theme_mod('footer_social_instagram') -%}
+                                <li>
+                                    <a href="https://www.instagram.com/{{ theme.theme_mod('footer_social_instagram') }}/" class="icon brands alt fa-instagram">
+                                        <span class="label">Instagram</span>
+                                    </a>
+                                </li>
+                            {%- endif -%}
+                            {%- if theme.theme_mod('footer_social_github') -%}
+                                <li>
+                                    <a href="https://github.com/{{ theme.theme_mod('footer_social_github') }}/" class="icon brands alt fa-github">
+                                        <span class="label">GitHub</span>
+                                    </a>
+                                </li>
+                            {%- endif -%}
+                            {%- if theme.theme_mod('footer_social_linkedin') -%}
+                                <li>
+                                    <a href="https://www.linkedin.com/in/{{ theme.theme_mod('footer_social_linkedin') }}/" class="icon brands alt fa-linkedin-in">
+                                        <span class="label">LinkedIn</span>
+                                    </a>
+                                </li>
+                            {%- endif -%}
                         </ul>
                         <ul class="copyright">
-                            <li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+                            <li>&copy; {{ theme.theme_mod('footer_copyright')|default(site.title) }} {{ "now"|date("Y") }}</li>
+                            {%- if theme.theme_mod('footer_attribution_html5up') -%}
+                                <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+                            {%- endif -%}
+                            {%- if theme.theme_mod('footer_attribution_syllabary') -%}
+                                <li>WordPress Port: <a href="https://syllabary.tech">Syllabary</a></li>
+                            {%- endif -%}
                         </ul>
                     </div>
                 </footer>
-
         </div>
 
         {{ function('wp_footer') }}
