@@ -14,7 +14,7 @@
 			@include vendor('display', 'flex');
 			padding: 0 !important;
 
-			> :nth-child(2n - 1) {
+			> :nth-child(2n - 1):not(:only-child) {
 				@include padding(4em, 0, (0, 3em, 0, 0));
 				border-right: solid 1px _palette(border);
 				width: 60%;

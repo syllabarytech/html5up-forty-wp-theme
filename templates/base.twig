@@ -51,99 +51,120 @@
             Sorry, no content
         {% endblock %}
 
-            <!-- Contact -->
+            {%- set show_form = theme.theme_mod('footer_contact_form') -%}
+            {%- set email = theme.theme_mod('footer_contact_email') -%}
+            {%- set phone = theme.theme_mod('footer_contact_phone') -%}
+            {%- set address = theme.theme_mod('footer_contact_address') -%}
+
+            {%- if show_form or email or phone or address -%}
+                <!-- Contact -->
                 <section id="contact">
                     <div class="inner">
-                        <section>
-                            <form method="post" action="#">
-                                <div class="fields">
-                                    <div class="field half">
-                                        <label for="name">Name</label>
-                                        <input type="text" name="name" id="name" />
+                        {%- if show_form and email -%}
+                            <section>
+                                <form method="post" action="#">
+                                    <div class="fields">
+                                        <div class="field half">
+                                            <label for="name">Name</label>
+                                            <input type="text" name="name" id="name" />
+                                        </div>
+                                        <div class="field half">
+                                            <label for="email">Email</label>
+                                            <input type="text" name="email" id="email" />
+                                        </div>
+                                        <div class="field">
+                                            <label for="message">Message</label>
+                                            <textarea name="message" id="message" rows="6"></textarea>
+                                        </div>
                                     </div>
-                                    <div class="field half">
-                                        <label for="email">Email</label>
-                                        <input type="text" name="email" id="email" />
-                                    </div>
-                                    <div class="field">
-                                        <label for="message">Message</label>
-                                        <textarea name="message" id="message" rows="6"></textarea>
-                                    </div>
-                                </div>
-                                <ul class="actions">
-                                    <li><input type="submit" value="Send Message" class="primary" /></li>
-                                    <li><input type="reset" value="Clear" /></li>
-                                </ul>
-                            </form>
-                        </section>
+                                    <ul class="actions">
+                                        <li><input type="submit" value="Send Message" class="primary" /></li>
+                                        <li><input type="reset" value="Clear" /></li>
+                                    </ul>
+                                </form>
+                            </section>
+                        {%- endif -%}
                         <section class="split">
-                            <section>
-                                <div class="contact-method">
-                                    <span class="icon solid alt fa-envelope"></span>
-                                    <h3>Email</h3>
-                                    <a href="#">information@untitled.tld</a>
-                                </div>
-                            </section>
-                            <section>
-                                <div class="contact-method">
-                                    <span class="icon solid alt fa-phone"></span>
-                                    <h3>Phone</h3>
-                                    <span>(000) 000-0000 x12387</span>
-                                </div>
-                            </section>
-                            <section>
-                                <div class="contact-method">
-                                    <span class="icon solid alt fa-home"></span>
-                                    <h3>Address</h3>
-                                    <span>1234 Somewhere Road #5432<br />
-                                    Nashville, TN 00000<br />
-                                    United States of America</span>
-                                </div>
-                            </section>
+                            {%- if theme.theme_mod('footer_contact_email') -%}
+                                <section>
+                                    <div class="contact-method">
+                                        <span class="icon solid alt fa-envelope"></span>
+                                        <h3>Email</h3>
+                                        <span>{{ theme.theme_mod('footer_contact_email') }}</span>
+                                    </div>
+                                </section>
+                            {%- endif -%}
+                            {%- if theme.theme_mod('footer_contact_phone') -%}
+                                <section>
+                                    <div class="contact-method">
+                                        <span class="icon solid alt fa-phone"></span>
+                                        <h3>Phone</h3>
+                                        <span>{{ theme.theme_mod('footer_contact_phone') }}</span>
+                                    </div>
+                                </section>
+                            {%- endif -%}
+                            {%- if theme.theme_mod('footer_contact_address') -%}
+                                <section>
+                                    <div class="contact-method">
+                                        <span class="icon solid alt fa-home"></span>
+                                        <h3>Address</h3>
+                                        <span>{{ theme.theme_mod('footer_contact_address')|nl2br }}</span>
+                                    </div>
+                                </section>
+                            {%- endif -%}
                         </section>
                     </div>
                 </section>
+            {%- endif -%}
 
-            <!-- Footer -->
+            {%- set twitter = theme.theme_mod('footer_social_twitter') -%}
+            {%- set facebook = theme.theme_mod('footer_social_facebook') -%}
+            {%- set instagram = theme.theme_mod('footer_social_instagram') -%}
+            {%- set github = theme.theme_mod('footer_social_github') -%}
+            {%- set linkedin = theme.theme_mod('footer_social_linkedin') -%}
+
+                <!-- Footer -->
                 <footer id="footer">
                     <div class="inner">
-                        <ul class="icons">
-                            {%- if theme.theme_mod('footer_social_twitter') -%}
-                                <li>
-                                    <a href="https://twitter.com/{{ theme.theme_mod('footer_social_twitter') }}" class="icon brands alt fa-twitter">
-                                        <span class="label">Twitter</span>
-                                    </a>
-                                </li>
-                            {%- endif -%}
-                            {%- if theme.theme_mod('footer_social_facebook') -%}
-                                <li>
-                                    <a href="https://www.facebook.com/{{ theme.theme_mod('footer_social_facebook') }}" class="icon brands alt fa-facebook-f">
-                                        <span class="label">Facebook</span>
-                                    </a>
-                                </li>
-                            {%- endif -%}
-                            {%- if theme.theme_mod('footer_social_instagram') -%}
-                                <li>
-                                    <a href="https://www.instagram.com/{{ theme.theme_mod('footer_social_instagram') }}/" class="icon brands alt fa-instagram">
-                                        <span class="label">Instagram</span>
-                                    </a>
-                                </li>
-                            {%- endif -%}
-                            {%- if theme.theme_mod('footer_social_github') -%}
-                                <li>
-                                    <a href="https://github.com/{{ theme.theme_mod('footer_social_github') }}/" class="icon brands alt fa-github">
-                                        <span class="label">GitHub</span>
-                                    </a>
-                                </li>
-                            {%- endif -%}
-                            {%- if theme.theme_mod('footer_social_linkedin') -%}
-                                <li>
-                                    <a href="https://www.linkedin.com/in/{{ theme.theme_mod('footer_social_linkedin') }}/" class="icon brands alt fa-linkedin-in">
-                                        <span class="label">LinkedIn</span>
-                                    </a>
-                                </li>
-                            {%- endif -%}
-                        </ul>
+                        {%- if twitter or facebook or instagram or github or linkedin -%}
+                            <ul class="icons">
+                                {%- if twitter -%}
+                                    <li>
+                                        <a href="https://twitter.com/{{ twitter }}" class="icon brands alt fa-twitter">
+                                            <span class="label">Twitter</span>
+                                        </a>
+                                    </li>
+                                {%- endif -%}
+                                {%- if facebook -%}
+                                    <li>
+                                        <a href="https://www.facebook.com/{{ facebook }}" class="icon brands alt fa-facebook-f">
+                                            <span class="label">Facebook</span>
+                                        </a>
+                                    </li>
+                                {%- endif -%}
+                                {%- if instagram -%}
+                                    <li>
+                                        <a href="https://www.instagram.com/{{ instagram }}/" class="icon brands alt fa-instagram">
+                                            <span class="label">Instagram</span>
+                                        </a>
+                                    </li>
+                                {%- endif -%}
+                                {%- if github -%}
+                                    <li>
+                                        <a href="https://github.com/{{ github }}/" class="icon brands alt fa-github">
+                                            <span class="label">GitHub</span>
+                                        </a>
+                                    </li>
+                                {%- endif -%}
+                                {%- if linkedin -%}
+                                    <li>
+                                        <a href="https://www.linkedin.com/in/{{ linkedin }}/" class="icon brands alt fa-linkedin-in">
+                                            <span class="label">LinkedIn</span>
+                                        </a>
+                                    </li>
+                                {%- endif -%}
+                            </ul>
+                        {%- endif -%}
                         <ul class="copyright">
                             <li>&copy; {{ theme.theme_mod('footer_copyright')|default(site.title) }} {{ "now"|date("Y") }}</li>
                             {%- if theme.theme_mod('footer_attribution_html5up') -%}

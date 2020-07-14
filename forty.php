@@ -204,14 +204,14 @@ class Forty extends Site {
             'label' => 'Email',
             'section' => 'footer_contact',
             'settings' => 'footer_contact_email',
-            'type' => 'text'
+            'type' => 'email'
         ]));
 
         $wpc->add_control(new WP_Customize_Control($wpc, 'footer_contact_phone', [
             'label' => 'Phone',
             'section' => 'footer_contact',
             'settings' => 'footer_contact_phone',
-            'type' => 'text'
+            'type' => 'tel'
         ]));
 
         $wpc->add_control(new WP_Customize_Control($wpc, 'footer_contact_address', [
