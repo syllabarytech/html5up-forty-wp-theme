@@ -122,27 +122,33 @@
                             'header',
                             {className: 'major'},
                             el(
-                                PlainText,
-                                {
-                                    tagName: 'h3',
-                                    inline: true,
-                                    placeholder: 'Enter Heading Here',
-                                    value: props.attributes.heading,
-                                    onChange: updateHeading,
-                                }
+                                'h3',
+                                null,
+                                el(
+                                    PlainText,
+                                    {
+                                        inline: true,
+                                        placeholder: 'Enter Heading Here',
+                                        value: props.attributes.heading,
+                                        onChange: updateHeading,
+                                    }
+                                )
                             )
                         ), el(
-                            PlainText,
-                            {
-                                tagName: 'p',
-                                inline: true,
-                                placeholder: 'Enter Content Here',
-                                value: props.attributes.content,
-                                onChange: updateContent,
-                                style: {
-                                    background: 'transparent'
+                            'p',
+                            null,
+                            el(
+                                PlainText,
+                                {
+                                    inline: true,
+                                    placeholder: 'Enter Content Here',
+                                    value: props.attributes.content,
+                                    onChange: updateContent,
+                                    style: {
+                                        background: 'transparent'
+                                    }
                                 }
-                            }
+                            )
                         )
                     ]
                 );

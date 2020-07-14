@@ -108,17 +108,20 @@
                                 'header',
                                 {className: 'major'},
                                 el(
-                                    PlainText,
-                                    {
-                                        tagName: 'h1',
-                                        inline: true,
-                                        placeholder: 'Enter Heading Here',
-                                        value: heading,
-                                        onChange: updateHeading,
-                                        style: {
-                                            background: 'transparent'
+                                    'h1',
+                                    null,
+                                    el(
+                                        PlainText,
+                                        {
+                                            inline: true,
+                                            placeholder: 'Enter Heading Here',
+                                            value: heading,
+                                            onChange: updateHeading,
+                                            style: {
+                                                background: 'transparent'
+                                            }
                                         }
-                                    }
+                                    )
                                 )
                             ),
                             el(

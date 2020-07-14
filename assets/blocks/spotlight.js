@@ -141,30 +141,36 @@
                                         'header',
                                         {className: 'major'},
                                         el(
+                                            'h3',
+                                            null,
+                                            el(
+                                                PlainText,
+                                                {
+                                                    inline: true,
+                                                    placeholder: 'Enter Heading Here',
+                                                    value: props.attributes.heading,
+                                                    onChange: updateHeading,
+                                                    style: {
+                                                        background: 'transparent'
+                                                    }
+                                                }
+                                            )
+                                        )
+                                    ), el(
+                                        'p',
+                                        null,
+                                        el(
                                             PlainText,
                                             {
-                                                tagName: 'h3',
                                                 inline: true,
-                                                placeholder: 'Enter Heading Here',
-                                                value: props.attributes.heading,
-                                                onChange: updateHeading,
+                                                placeholder: 'Enter Content Here',
+                                                value: props.attributes.content,
+                                                onChange: updateContent,
                                                 style: {
                                                     background: 'transparent'
                                                 }
                                             }
                                         )
-                                    ), el(
-                                        PlainText,
-                                        {
-                                            tagName: 'p',
-                                            inline: true,
-                                            placeholder: 'Enter Content Here',
-                                            value: props.attributes.content,
-                                            onChange: updateContent,
-                                            style: {
-                                                background: 'transparent'
-                                            }
-                                        }
                                     ), el(
                                         'span',
                                         {

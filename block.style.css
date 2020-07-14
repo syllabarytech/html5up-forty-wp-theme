@@ -16,20 +16,16 @@
     width: calc(100% - 6em);
 }
 
-.edit-post-visual-editor.editor-styles-wrapper h1,
-.edit-post-visual-editor.editor-styles-wrapper h2,
-.edit-post-visual-editor.editor-styles-wrapper h3,
-.edit-post-visual-editor.editor-styles-wrapper h4,
-.edit-post-visual-editor.editor-styles-wrapper h5,
-.edit-post-visual-editor.editor-styles-wrapper [tagname="h1"],
-.edit-post-visual-editor.editor-styles-wrapper [tagname="h2"],
-.edit-post-visual-editor.editor-styles-wrapper [tagname="h3"],
-.edit-post-visual-editor.editor-styles-wrapper [tagname="h4"],
-.edit-post-visual-editor.editor-styles-wrapper [tagname="h5"],
-.edit-post-visual-editor.editor-styles-wrapper [tagname="h6"]
+.editor-styles-wrapper .wp-block[data-type^="forty/"] h1,
+.editor-styles-wrapper .wp-block[data-type^="forty/"] h2,
+.editor-styles-wrapper .wp-block[data-type^="forty/"] h3,
+.editor-styles-wrapper .wp-block[data-type^="forty/"] h4,
+.editor-styles-wrapper .wp-block[data-type^="forty/"] h5
 {
     color: #ffffff;
     font-weight: 600;
+    line-height: 1.65;
+    margin: 0 0 1em 0;
 }
 
 .editor-post-title__block .editor-post-title__input,
@@ -41,6 +37,7 @@
 {
     font-family: "Source Sans Pro", Helvetica, sans-serif;
     color: #ffffff;
+    background: transparent;
 }
 
 .editor-post-title__block .editor-post-title__input::placeholder,
@@ -66,13 +63,7 @@
 }
 
 .wp-block[data-type="forty/tile"] {
-    -moz-align-items: center;
-    -webkit-align-items: center;
-    -ms-align-items: center;
     align-items: center;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: -ms-flex;
     display: flex;
     cursor: default;
     height: 40vh;
@@ -160,23 +151,18 @@
     color: #ffffff;
 }
 
-.wp-block[data-type="forty/tile"] [tagname="h3"] {
-    color: #ffffff;
+.wp-block[data-type="forty/tile"] h3 {
     line-height: 1.4;
     font-size: 1.56em;
-    background: transparent;
 }
 
-.wp-block[data-type="forty/tile"] [tagname="p"] {
+.wp-block[data-type="forty/tile"] p {
     color: #ffffff;
     background: transparent;
 }
 
 .wp-block[data-type="forty/tile"]::before {
     content: '';
-    -moz-transition: opacity 0.5s ease;
-    -webkit-transition: opacity 0.5s ease;
-    -ms-transition: opacity 0.5s ease;
     transition: opacity 0.5s ease;
     bottom: 0;
     display: block;
@@ -236,7 +222,15 @@
     background-color: #87c5a4;
 }
 
-header.major::after {
+.wp-block[data-type^="forty/"] header.major {
+    margin-bottom: 2em;
+}
+
+.wp-block[data-type^="forty/"] header.major > :first-child {
+    margin-bottom: 0;
+}
+
+.wp-block[data-type^="forty/"] header.major > :first-child::after {
     content: '';
     background-color: #ffffff;
     display: block;
@@ -251,7 +245,7 @@ header.major::after {
     background: #242943;
 }
 
-.wp-block[data-type="forty/banner"] header.major {
+.wp-block[data-type="forty/banner"] h1 {
     font-size: 3.25em;
 }
 

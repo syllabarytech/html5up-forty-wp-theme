@@ -1,6 +1,5 @@
 (function(blocks, element, blockEditor) {
     var el = element.createElement;
-    var InnerBlocks = blockEditor.InnerBlocks;
 	var PlainText = blockEditor.PlainText;
     var URLInputButton = blockEditor.URLInputButton;
  
