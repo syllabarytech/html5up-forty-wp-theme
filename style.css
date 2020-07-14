@@ -3664,7 +3664,7 @@ input, select, textarea {
 					position: relative;
 				}
 
-					#contact > .inner > .split > *:before {
+					#contact > .inner > .split:not(:only-child) > *:before {
 						border-top: solid 1px rgba(212, 212, 255, 0.1);
 						content: '';
 						display: block;
@@ -3674,9 +3674,16 @@ input, select, textarea {
 						width: calc(100vw + 3em);
 					}
 
-				#contact > .inner > .split > :first-child:before {
+				#contact > .inner > .split:not(:only-child) > :first-child:before {
 					display: none;
 				}
+
+					#contact > .inner > .split:only-child {
+						width: 100%;
+						display: flex;
+						flex-direction: row;
+						justify-content: space-evenly;
+					}
 
 		@media screen and (max-width: 980px) {
 

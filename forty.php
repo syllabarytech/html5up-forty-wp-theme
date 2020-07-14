@@ -171,6 +171,7 @@ class Forty extends Site {
             'description' => 'Your contact information displayed in the site footer.',
             'panel' => 'footer',
         ]);
+        $wpc->add_setting('footer_contact_form', ['default' => true, 'type' => 'theme_mod']);
         $wpc->add_setting('footer_contact_email', ['default' => '', 'type' => 'theme_mod']);
         $wpc->add_setting('footer_contact_phone', ['default' => '', 'type' => 'theme_mod']);
         $wpc->add_setting('footer_contact_address', ['default' => '', 'type' => 'theme_mod']);
@@ -199,6 +200,14 @@ class Forty extends Site {
             'panel' => 'footer',
         ]);
         $wpc->add_setting('footer_copyright', ['default' => '', 'type' => 'theme_mod']);
+
+        $wpc->add_control(new WP_Customize_Control($wpc, 'footer_contact_form', [
+            'label' => 'Show Contact Form',
+            'description' => 'This also requires an email address to be provided below.',
+            'section' => 'footer_contact',
+            'settings' => 'footer_contact_form',
+            'type' => 'checkbox'
+        ]));
 
         $wpc->add_control(new WP_Customize_Control($wpc, 'footer_contact_email', [
             'label' => 'Email',
