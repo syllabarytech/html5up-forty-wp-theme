@@ -52,7 +52,7 @@
                 buttonText: {
                     type: 'string',
                     source: 'text',
-                    selector: 'a.button',
+                    selector: '.button',
                 }
             },
             example: {},
@@ -228,8 +228,50 @@
                         )
                     );
                 } else {
-                    var imageElement = null;
+                    var imageElement = el(
+                        'span',
+                        {
+                            className: 'image'
+                        },
+                    );
                 }
+
+                return el(
+                    'section',
+                    null,
+                    [
+                        imageElement,
+                        el(
+                            'div',
+                            { className: 'content' },
+                            el(
+                                'div',
+                                { className: 'inner' },
+                                [
+                                    el(
+                                        'header',
+                                        {className: 'major'},
+                                        el(
+                                            'h3',
+                                            null,
+                                            props.attributes.heading
+                                        )
+                                    ), el(
+                                        'p',
+                                        null,
+                                        props.attributes.content
+                                    ), el(
+                                        'a',
+                                        {
+                                            className: props.attributes.buttonText ? 'button' : ''
+                                        },
+                                        props.attributes.buttonText
+                                    ),
+                                ]
+                            )
+                        )
+                    ]
+                );
             },
         }
     );

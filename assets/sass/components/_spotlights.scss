@@ -6,7 +6,7 @@
 
 /* Spotlights */
 
-	.spotlights {
+	.wp-block-forty-spotlight-section {
 		border-top: 0 !important;
 
 		& + * {
@@ -30,6 +30,9 @@
 					border-radius: 0;
 					display: block;
 					width: 100%;
+					min-height: 100%;
+					object-fit: cover;
+					object-position: center center;
 				}
 
 				&:before {
