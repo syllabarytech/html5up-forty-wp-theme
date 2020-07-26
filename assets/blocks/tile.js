@@ -5,6 +5,7 @@
     var URLInputButton = blockEditor.URLInputButton;
     var Icon = components.Icon;
     var Button = components.Button;
+    var ButtonGroup = components.ButtonGroup;
  
     blocks.registerBlockType(
         'forty/tile',
@@ -55,11 +56,14 @@
             edit: function(props) {
                 var updateImage = function(value) {
                     return props.setAttributes({
-                        mediaURL: value.url,
-                        mediaID: value.id,
-                        alt: value.alt,
+                        mediaURL: value ? value.url : null,
+                        mediaID: value ? value.id : null,
+                        alt: value ? value.alt : null,
                     });
                 };
+                var removeImage = function() {
+                    updateImage(null);
+                }
                 var updateHeading = function(value) {
                     return props.setAttributes({heading: value})
                 }
@@ -95,10 +99,11 @@
                                         allowedTypes: 'image',
                                         value: props.attributes.mediaID,
                                         render: function( obj ) {
-                                            return el(
+                                            var addOrEditImageElement = el(
                                                 Button,
                                                 {
                                                     className: 'components-toolbar__control has-icon' + (props.attributes.mediaID ? ' is-pressed' : ''),
+                                                    isPrimary: true,
                                                     onClick: obj.open,
                                                 },
                                                 el(
@@ -107,6 +112,30 @@
                                                         icon: 'format-image'
                                                     }
                                                 )
+                                            );
+
+                                            var removeImageButtonElement = el(
+                                                Button,
+                                                {
+                                                    className: 'components-toolbar__control has-icon',
+                                                    isDestructive: true,
+                                                    onClick: removeImage,
+                                                },
+                                                el(
+                                                    Icon,
+                                                    {
+                                                        icon: 'trash'
+                                                    }
+                                                )
+                                            );
+
+                                            return el(
+                                                ButtonGroup,
+                                                {},
+                                                [
+                                                    addOrEditImageElement,
+                                                    props.attributes.mediaID ? removeImageButtonElement : null
+                                                ]
                                             );
                                         },
                                     }

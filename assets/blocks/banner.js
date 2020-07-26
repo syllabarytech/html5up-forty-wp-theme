@@ -43,13 +43,17 @@
                             {},
                             meta,
                             {
-                                'forty_banner_media_id': value.id,
-                                'forty_banner_media_url': value.url,
-                                'forty_banner_media_alt': value.alt,
+                                'forty_banner_media_id': value ? value.id : null,
+                                'forty_banner_media_url': value ? value.url : null,
+                                'forty_banner_media_alt': value ? value.alt : null,
                             }
                         )
                     );
                 };
+
+                var removeImage = function() {
+                    updateImage(null);
+                }
 
                 var updateHeading = function(value) {
                     setMeta(
@@ -89,7 +93,7 @@
                                     allowedTypes: 'image',
                                     value: mediaID,
                                     render: function( obj ) {
-                                        return el(
+                                        var addOrEditImageElement = el(
                                             Button,
                                             {
                                                 className: 'components-toolbar__control has-icon' + (mediaID ? ' is-pressed' : ''),
@@ -102,6 +106,25 @@
                                                 }
                                             )
                                         );
+
+                                        var removeImageButtonElement = el(
+                                            Button,
+                                            {
+                                                className: 'components-toolbar__control has-icon is-pressed',
+                                                onClick: removeImage,
+                                            },
+                                            el(
+                                                Icon,
+                                                {
+                                                    icon: 'trash'
+                                                }
+                                            )
+                                        );
+
+                                        return [
+                                            addOrEditImageElement,
+                                            mediaID ? removeImageButtonElement : null
+                                        ];
                                     },
                                 }
                             ), el(
