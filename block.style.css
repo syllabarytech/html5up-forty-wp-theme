@@ -49,6 +49,10 @@
     color: rgb(255,255,255,0.7);
 }
 
+.block-editor-url-input__button-modal {
+    background: transparent;
+}
+
 .wp-block {
     max-width: none;
 }

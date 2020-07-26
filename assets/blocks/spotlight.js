@@ -236,6 +236,27 @@
                     );
                 }
 
+                if (props.attributes.link && props.attributes.buttonText) {
+                    var buttonElement = el(
+                        'a',
+                        {
+                            href: props.attributes.link,
+                            className: 'button',
+                        },
+                        props.attributes.buttonText
+                    )
+                } else if (props.attributes.buttonText) {
+                    var buttonElement = el(
+                        'span',
+                        {
+                            className: 'button',
+                        },
+                        props.attributes.buttonText
+                    )
+                } else {
+                    var buttonElement = null
+                }
+
                 return el(
                     'section',
                     null,
@@ -260,13 +281,8 @@
                                         'p',
                                         null,
                                         props.attributes.content
-                                    ), el(
-                                        'a',
-                                        {
-                                            className: props.attributes.buttonText ? 'button' : ''
-                                        },
-                                        props.attributes.buttonText
                                     ),
+                                    buttonElement
                                 ]
                             )
                         )
