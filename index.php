@@ -11,11 +11,11 @@ $context['posts'] = new PostQuery();
 $templates = ['index.twig'];
 
 if (is_front_page()) {
-    $templates = ['front-page.twig', ...$templates];
+    array_unshift($templates, 'front-page.twig');
 }
 
 if (is_home()) {
-    $templates = ['home.twig', ...$templates];
+    array_unshift($templates, 'home.twig');
 }
 
 Timber::render($templates, $context);

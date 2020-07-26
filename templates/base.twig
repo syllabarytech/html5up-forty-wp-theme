@@ -56,11 +56,11 @@
             {%- set phone = theme.theme_mod('footer_contact_phone') -%}
             {%- set address = theme.theme_mod('footer_contact_address') -%}
 
-            {%- if show_form or email or phone or address -%}
+            {%- if show_form or email|length or phone|length or address|length -%}
                 <!-- Contact -->
                 <section id="contact">
                     <div class="inner">
-                        {%- if show_form and email -%}
+                        {%- if show_form and email|length -%}
                             <section>
                                 <form method="post" action="https://mailthis.to/{{ email }}">
                                     <div class="fields">
@@ -85,30 +85,30 @@
                             </section>
                         {%- endif -%}
                         <section class="split">
-                            {%- if theme.theme_mod('footer_contact_email') -%}
+                            {%- if email|length -%}
                                 <section>
                                     <div class="contact-method">
                                         <span class="icon solid alt fa-envelope"></span>
                                         <h3>Email</h3>
-                                        <span>{{ theme.theme_mod('footer_contact_email') }}</span>
+                                        <span>{{ email }}</span>
                                     </div>
                                 </section>
                             {%- endif -%}
-                            {%- if theme.theme_mod('footer_contact_phone') -%}
+                            {%- if phone|length -%}
                                 <section>
                                     <div class="contact-method">
                                         <span class="icon solid alt fa-phone"></span>
                                         <h3>Phone</h3>
-                                        <span>{{ theme.theme_mod('footer_contact_phone') }}</span>
+                                        <span>{{ phone }}</span>
                                     </div>
                                 </section>
                             {%- endif -%}
-                            {%- if theme.theme_mod('footer_contact_address') -%}
+                            {%- if address|length -%}
                                 <section>
                                     <div class="contact-method">
                                         <span class="icon solid alt fa-home"></span>
                                         <h3>Address</h3>
-                                        <span>{{ theme.theme_mod('footer_contact_address')|nl2br }}</span>
+                                        <span>{{ address }}</span>
                                     </div>
                                 </section>
                             {%- endif -%}
@@ -166,7 +166,7 @@
                             </ul>
                         {%- endif -%}
                         <ul class="copyright">
-                            <li>&copy; {{ theme.theme_mod('footer_copyright')|default(site.title) }} {{ "now"|date("Y") }}</li>
+                            <li>&copy; {{ "now"|date("Y") }} {{ theme.theme_mod('footer_copyright')|default(site.title) }}</li>
                             {%- if theme.theme_mod('footer_attribution_html5up') -%}
                                 <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
                             {%- endif -%}

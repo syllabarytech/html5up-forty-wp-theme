@@ -141,7 +141,8 @@
 }
 
 .wp-block[data-type="forty/tile"] button,
-.wp-block[data-type="forty/tile"] textarea
+.wp-block[data-type="forty/tile"] textarea,
+.wp-block[data-type="forty/tile"] form
 {
     position: relative;
     z-index: 3;
